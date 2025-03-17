@@ -1,0 +1,18 @@
+<div class="hero-container">
+    <img src="/Fondo.png" alt="Fondo" class="hero-background" />
+    <div class="hero-content">
+      <h1 class="hero-title">ACTIVIDADES</h1>
+    </div>  
+</div>
+
+<div class="actividad" *ngFor="let actividad of actividades" >
+    <img src="http://172.17.131.14:3000/uploads/1741964605700.png" alt="Escalada"/>
+    <div class="contenido" >
+        <div class="titulo">{{actividad.nombre_tipo_actividad}}</div>
+        <p>{{actividad.id_tipo_actividad}} - {{actividad.nombre_tipo_actividad}} - </p>
+        <div class="precio">{{actividad.precio}}€/H</div>
+    </div>
+</div>
+
+
+

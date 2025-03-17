@@ -1,0 +1,20 @@
+<div class="hero-container">
+    <img src="/Fondo.png" alt="Fondo" class="hero-background" />
+    <div class="hero-content">
+      <h1 class="hero-title">FORO</h1>
+    </div>  
+  </div>
+  
+  <div class="comments-container">
+    <div class="comment-card" *ngFor="let comment of comments">
+        <p>{{ comment.text }}</p>
+        <div class="comment-footer">
+            <img [src]="comment.image" alt="Profile" class="profile-pic" />
+            <div>
+                <h4>{{ comment.author }}</h4>
+                <p class="stars">{{ comment.stars }}</p>
+            </div>
+            <button class="reply-button" (click)="navigateToPostBlog(comment)">Responder</button>
+        </div>
+    </div>
+  </div>

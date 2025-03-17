@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    /* Ajusta la imagen para cubrir el contenedor manteniendo proporciones */
+    z-index: -1;
+    /* Envía la imagen al fondo */
+}
+
+.hero-content {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-title {
+    color: rgb(255, 255, 255);
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+/* ACTIVIDADES */
+.actividad {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px 0;
+    overflow: hidden;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.actividad img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.contenido {
+    padding: 15px;
+    background-color: #143D2C;
+    color: white;
+    flex: 1;
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.precio {
+    background: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
