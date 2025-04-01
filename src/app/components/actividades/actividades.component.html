@@ -1,19 +1,16 @@
-<div class="hero-container">
-    <img src="/Fondo.png" alt="Fondo" class="hero-background" />
-    <div class="hero-content">
-      <h1 class="hero-title">ACTIVIDADES</h1>
-    </div>  
-</div>
-
-<div class="actividad" *ngFor="let actividad of actividades" >
-    <img src="{{actividad.nombre_imagen_actividad}}" alt="Escalada"/>
-    <div class="contenido" >
-        <div class="titulo">Nombre tipo actividad: {{actividad.nombre_tipo_actividad}}</div>
+<div class="actividad" *ngFor="let actividad of actividades | paginate: { itemsPerPage: 5, currentPage: p }">
+    <img src="{{actividad.nombre_imagen_actividad}}" alt="Escalada" />
+    <div class="contenido">
+        <div class="titulo">Nombre tipo actividad:
+            {{actividad.nombre_tipo_actividad}}</div>
         <p>pais: {{actividad.pais}} - ciudad: {{actividad.ciudad}}</p>
         <p>descripcion: {{actividad.descripcion}}</p>
         <div class="precio">{{actividad.precio}}€/H</div>
     </div>
 </div>
 
+<div class="paginacion">
+    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente">
 
-
+    </pagination-controls>
+</div>

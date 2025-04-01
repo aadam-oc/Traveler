@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -10,5 +11,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './perfil.component.css'
 })
 export class PerfilComponent {
+
+  constructor(private router: Router, private apiService: ApiService) { }
 
 }

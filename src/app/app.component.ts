@@ -5,6 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { OpenaiService } from './services/openai.service';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

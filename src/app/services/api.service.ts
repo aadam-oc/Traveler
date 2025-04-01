@@ -43,7 +43,7 @@ getActividadById(id: number): Observable<any> {
 }
 
 //crear actividad
-postActividad(actividad: Item): Observable<any> {
+postActividad(actividad: any): Observable<any> {
   return this.http.post(`${this.apiUrl}/traveler/actividades`, actividad);
 }
 
@@ -147,6 +147,11 @@ putAlojamiento(id: number, alojamiento: any): Observable<any> {
 //eliminar alojamiento
 deleteAlojamiento(id: number): Observable<any> {
   return this.http.delete(`${this.apiUrl}/traveler/alojamientos/${id}`);
+}
+
+//alojamientos completos
+getAlojamientosCompletos(): Observable<any> {
+  return this.http.get(`${this.apiUrl}/traveler/alojamientos_completo`);
 }
 
 

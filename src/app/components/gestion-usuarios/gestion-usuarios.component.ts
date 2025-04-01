@@ -10,9 +10,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-gestion-usuarios',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink, FormsModule, MatExpansionModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, MatExpansionModule],
   templateUrl: './gestion-usuarios.component.html',
-  styleUrl: './gestion-usuarios.component.css'
+  styleUrl: '../dashboard/dashboard.component.css',
 })
 export class GestionUsuariosComponent {
   users: any[] = [];

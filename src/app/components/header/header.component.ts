@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 
 @Component({
@@ -10,13 +11,25 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent  {
-  constructor(private router: Router) {}
+
+  pageTitle: string = 'Bienvenido';
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
   isLoggedIn(): boolean {
     return localStorage.getItem('authToken') !== null;
   }
   logout() {
     localStorage.removeItem('authToken');
     this.router.navigate(['/login']);  
+  }
+
+  ngOnInit(): void {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.pageTitle = this.route.root.firstChild?.snapshot.data['title'] || 'Bienvenido';
+    });
   }
   
 }

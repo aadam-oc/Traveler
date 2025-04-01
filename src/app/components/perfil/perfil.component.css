@@ -17,13 +17,49 @@
 
 .card {
     display: flex;
-    flex-direction: column;
-    background-color: #9c9c9c;
+    align-items: center;
+    justify-content: center;
     border-radius: 15px;
     margin: 20px;
     padding: 10px;
+    gap: 20px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
 .nombre {
-    font-weight: 500;
+    
+}
+
+.foto-usuario {
+    width: 124px;
+    height: auto;
+}
+
+.edit-btn {
+    margin-top: 10px;
+    background-color: #0D3C00;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.edit-bton:hover {
+    background-color: #145A00;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card-info p {
+    font-size: 16px;
 }

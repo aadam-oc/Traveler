@@ -16,17 +16,17 @@ import { PostBlogComponent } from './components/post-blog/post-blog.component';
 
 export const appRoutes: Routes = [
   { path: '', component: InicioComponent },
-  { path: 'login', component: HeroLoginComponent },
-  { path: 'register', component: HeroComponent },
-  { path: 'dashboard', component: DashboardComponent}, 
-  { path: 'actividades', component: ActividadesComponent},
-  { path: 'destinos', component: DestinosComponent},
-  { path: 'alojamientos', component: AlojamientosComponent},
-  { path: 'vuelos', component: VuelosComponent},
-  { path: 'vehiculos-alquiler', component: VehiculosAlquilerComponent},
-  { path: 'foro', component: ForoComponent},
-  { path: 'contacto', component: ContactoComponent},
-  { path: 'perfil', component: PerfilComponent},
+  { path: 'login', component: HeroLoginComponent, data: {title: 'INICIO DE SESIÓN'} },
+  { path: 'register', component: HeroComponent, data: {title: 'REGISTRO'} },
+  { path: 'dashboard', component: DashboardComponent, data: {title: 'DASHBOARD'}},
+  { path: 'actividades', component: ActividadesComponent, data: {title: 'ACTIVIDADES'}},
+  { path: 'destinos', component: DestinosComponent, data: {title: 'DESTINOS'}},
+  { path: 'alojamientos', component: AlojamientosComponent, data: {title: 'ALOJAMIENTOS'}},
+  { path: 'vuelos', component: VuelosComponent, data: {title: 'VUELOS'}},
+  { path: 'vehiculos-alquiler', component: VehiculosAlquilerComponent, data: {title: 'VEHÍCULOS ALQUILER'}},
+  { path: 'foro', component: ForoComponent, data: {title: 'FORO'}},
+  { path: 'contacto', component: ContactoComponent, data: {title: 'CONTACTO'}},
+  { path: 'perfil', component: PerfilComponent, data: {title: 'PERFIL'}},
   { path: 'post-blog', component: PostBlogComponent},
   { path: '**', redirectTo: '' } 
 ];
