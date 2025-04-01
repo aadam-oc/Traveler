@@ -18,7 +18,7 @@ export const appRoutes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'login', component: HeroLoginComponent },
   { path: 'register', component: HeroComponent },
-  { path: 'dashboard', component: DashboardComponent/*, canActivate: [AuthGuard]*/ }, 
+  { path: 'dashboard', component: DashboardComponent}, 
   { path: 'actividades', component: ActividadesComponent},
   { path: 'destinos', component: DestinosComponent},
   { path: 'alojamientos', component: AlojamientosComponent},

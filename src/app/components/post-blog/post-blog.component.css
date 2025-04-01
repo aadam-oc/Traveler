@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -48,41 +47,111 @@ body {
     font-size: 4.5rem;
     font-weight: bold;
 }
+  
+/* Contenedor de comentarios */
+.comments-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+  
+/* Tarjetas de comentarios */
+.comment-card {
+    background-color: #2d4739;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+/* Pie del comentario */
+.comment-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+  
+/* Imagen de perfil */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+  
+/* Botón de responder */
+.reply-button {
+    background-color: #1b3024;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.reply-button:hover {
+    background-color: #24402f;
+}
+
+/* Likes y Dislikes */
+.likes-dislikes {
+    display: flex;
+    gap: 10px;
+}
+
+.likes-dislikes button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.likes-dislikes button:hover {
+    color: #ccc;
+}
+
 .post-blog-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
     color: #2d4739;
-    margin-bottom: 20px;
-  }
-  
-  .reply-form {
+    margin-bottom: 40px;
+}
+
+.reply-form {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-  }
-  
-  .form-input, .form-textarea {
+}
+
+.form-input, .form-textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  .form-textarea {
+}
+
+.form-textarea {
     height: 100px;
     resize: vertical;
-  }
-  
-  .submit-button {
+}
+
+.submit-button {
     background-color: #2d4739;
     color: white;
     border: none;
@@ -90,30 +159,57 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  .submit-button:hover {
+}
+
+.submit-button:hover {
     background-color: #24402f;
-  }
-  
-  .replies-list {
+}
+
+.replies-list {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
-  }
-  
-  .reply-card {
+}
+
+.reply-card {
     background-color: white;
     padding: 15px;
     border-radius: 4px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .reply-card p {
+}
+
+.reply-card p {
     margin: 0;
-  }
-  
-  .reply-card strong {
+}
+
+.reply-card strong {
     color: #2d4739;
-  }
+}
+
+/* Estilos para el comentario seleccionado */
+.comment-card {
+  background-color: #2d4739;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 40px auto; /* Centra el comentario y agrega margen inferior */
+}
+
+.comment-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

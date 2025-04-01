@@ -98,4 +98,29 @@ body {
   .reply-button:hover {
     background-color: #24402f;
   }
-  
+
+  /* Likes y Dislikes */
+  .likes-dislikes {
+    display: flex;
+    gap: 10px;
+  }
+
+  .like-button, .dislike-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .like-button.active {
+    color: green;
+  }
+
+  .dislike-button.active {
+    color: red;
+  }
+
+  .like-button:hover, .dislike-button:hover {
+    color: #ccc;
+  }

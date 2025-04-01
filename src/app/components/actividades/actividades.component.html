@@ -6,10 +6,11 @@
 </div>
 
 <div class="actividad" *ngFor="let actividad of actividades" >
-    <img src="http://172.17.131.14:3000/uploads/1741964605700.png" alt="Escalada"/>
+    <img src="{{actividad.nombre_imagen_actividad}}" alt="Escalada"/>
     <div class="contenido" >
-        <div class="titulo">{{actividad.nombre_tipo_actividad}}</div>
-        <p>{{actividad.id_tipo_actividad}} - {{actividad.nombre_tipo_actividad}} - </p>
+        <div class="titulo">Nombre tipo actividad: {{actividad.nombre_tipo_actividad}}</div>
+        <p>pais: {{actividad.pais}} - ciudad: {{actividad.ciudad}}</p>
+        <p>descripcion: {{actividad.descripcion}}</p>
         <div class="precio">{{actividad.precio}}€/H</div>
     </div>
 </div>

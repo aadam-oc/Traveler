@@ -1,17 +1,17 @@
 <header>
   <div class="header-container">
-    <a class="logo" href="/inicio">
+    <a class="logo" routerLink="/inicio">
       <img src="logo.png" alt="Traveller Logo">
       <span>TRAVELLER</span>
     </a>
     <nav class="nav-menu">
       <ul>
-        <li><a href="/alojamientos">Alojamientos</a></li>
-        <li><a href="/vuelos">Vuelos</a></li>
-        <li><a href="/vehiculos-alquiler">Vehículos de alquiler</a></li>
-        <li><a href="/actividades">Actividades</a></li>
-        <li><a href="/foro">Foro</a></li>
-        <li><a href="/contacto">Contacto</a></li>
+        <li><a routerLink="/alojamientos">Alojamientos</a></li>
+        <li><a routerLink="/vuelos">Vuelos</a></li>
+        <li><a routerLink="/vehiculos-alquiler">Vehículos de alquiler</a></li>
+        <li><a routerLink="/actividades">Actividades</a></li>
+        <li><a routerLink="/foro">Foro</a></li>
+        <li><a routerLink="/contacto">Contacto</a></li>
       </ul>
     </nav>
     <div *ngIf="isLoggedIn(); else notLoggedIn" class="auth-buttons">

@@ -54,15 +54,12 @@ body {
     justify-content: center;
     gap: 30px;
     padding: 50px;
-    background-color: #8181813b;
-    border-radius: 10px;
     width: 80%;
     margin: 20px auto;
 }
 
 .vehicle-card {
-    background-color: #4E6254;
-    border-radius: 8px;
+    background-color: #cccccc;
     text-align: center;
     width: 80%;
     color: white;
@@ -84,12 +81,10 @@ body {
     justify-content: space-between;
     width: 100%;
     margin-top: 20px;
-    background-color: #233D2C;
+    background-color: #123d22;
     padding: 10px; /* Añadir padding para el contenido */
     bottom: 0; /* Alinear en la parte inferior */
     left: 0; /* Alinear a la izquierda */
-    border-bottom-left-radius: 8px; /* Añadir borde redondeado en la esquina inferior izquierda */
-    border-bottom-right-radius: 8px; /* Añadir borde redondeado en la esquina inferior derecha */
 }
 
 .vehicle-name {

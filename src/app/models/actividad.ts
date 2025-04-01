@@ -3,9 +3,10 @@ export interface Actividad {
     id_tipo_actividad: number;
     nombre_tipo_actividad: string;
     id_destino: number;
-    nombre_pais_destino: string;
-    nombre_ciudad_destino: string;
+    pais: string;
+    ciudad: string;
     descripcion: string;
-    disponibilidad: number;
+    disponibilidad_actividad: number;
     precio: number;
+    nombre_imagen_actividad: string;
 }

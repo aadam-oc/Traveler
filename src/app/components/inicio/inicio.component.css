@@ -16,31 +16,61 @@ body {
 }
 
 .hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-}
-
-.hero-background {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Imagen de fondo */
+  .hero-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 80%;
+    height: 100%;
     object-fit: cover;
-    /* Ajusta la imagen para cubrir el contenedor manteniendo proporciones */
     z-index: -1;
-    /* Envía la imagen al fondo */
-}
+    filter: brightness(0.7); /* Oscurece ligeramente la imagen para mejorar la legibilidad */
+  }
+  
+  /* Contenido del hero */
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    max-width: 600px;
+    padding: 20px;
+    z-index: 1;
+  }
+  
+  /* Título principal */
+  .welcome-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Subtítulo */
+  .welcome-subtitle {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: white;
+  }
+  
+  /* Descripción */
+  .welcome-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.9;
+    color: white;
+  }
+  
 
-.hero-content {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .welcome-title {
     color: rgb(255, 255, 255);
@@ -101,6 +131,7 @@ body {
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 8px;
+    color: white;
 }
 
 /* Estilos para el texto de la tarjeta */
@@ -108,6 +139,7 @@ body {
     font-size: 0.9rem;
     color: #333;
     margin-bottom: 12px;
+    color: white;
 }
 
 /* Estilos para el botón */
@@ -125,9 +157,35 @@ body {
     cursor: pointer;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
+.btn-primary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
+
+.btn-primary:hover {
+    background-color: white;
+    color: #00250f;
+    border-color: white;
+}
+
+
+.Tittle-destacados-1 {
+    text-align: center;
+    background-color: #00250f;
+    color: white;
+    padding: 0.02px;
+    max-width: 40%;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
 
 .Tittle-destacados-2 {
     text-align: center;
@@ -138,4 +196,29 @@ body {
     margin: 0 auto;
     border-radius: 12px;
     margin-top: 75px;
+}
+
+.antes-background{
+    margin-top: 125px;
+    width: 100%;
+    height: 900px;
+}
+
+.antes-content {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+
+}
+
+.social-icons {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    margin-top: 25px;
+    gap: 25px; 
+    align-items: center; 
 }

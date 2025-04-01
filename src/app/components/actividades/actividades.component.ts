@@ -14,28 +14,17 @@ import { Destinos } from '../../models/destinos';
 })
 export class ActividadesComponent {
   actividades: Actividad[] = [];
-  tiposActividades: TipoActividad[] = [];
-  destinos: Destinos[] = [];
+  
 
   constructor(private apiService: ApiService) { }
 
 
   ngOnInit() {
-    this.apiService.getActividades().subscribe((response: any) => {
+    this.apiService.getActividadesJoin().subscribe((response: any) => {
       console.log("Datos de la API:", response);
       this.actividades = response.actividades;
     });
 
-    this.apiService.getTiposActividades().subscribe((response: any) => {
-      console.log("Datos de la API:", response);
-      this.tiposActividades = response.tipos_actividades;
-    });
-
-    this.apiService.getDestinos().subscribe((response: any) => {
-      console.log("Datos de la API:", response);
-      this.destinos = response.destinos;
-    });
-  
     
   }
 }
