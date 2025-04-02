@@ -129,6 +129,11 @@ getAlojamientos(): Observable<any> {
   return this.http.get(`${this.apiUrl}/traveler/alojamientos`);
 }
 
+//alojamientos completos
+getAlojamientosCompletos(): Observable<any> {
+  return this.http.get(`${this.apiUrl}/traveler/alojamientos_completo`);
+}
+
 //alojamiento por id
 getAlojamientoById(id: number): Observable<any> {
   return this.http.get(`${this.apiUrl}/traveler/alojamientos/${id}`);
@@ -149,10 +154,7 @@ deleteAlojamiento(id: number): Observable<any> {
   return this.http.delete(`${this.apiUrl}/traveler/alojamientos/${id}`);
 }
 
-//alojamientos completos
-getAlojamientosCompletos(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/traveler/alojamientos_completo`);
-}
+
 
 
 

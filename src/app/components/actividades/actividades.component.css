@@ -28,9 +28,11 @@ body {
     margin: 30px auto;
 }
 
-.actividad img {
-    width: 200px;
-    height: 150px;
+
+
+.fto-actividad {
+    width: 240px;
+    height: auto;
     object-fit: cover;
 }
 

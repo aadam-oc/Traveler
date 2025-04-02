@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Actividad } from '../../models/actividad';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Alojamientos } from '../../models/alojamientos';
+import { Destinos } from '../../models/destinos';
 
 @Component({
   selector: 'app-gestion-alojamientos',
@@ -16,7 +17,9 @@ import { Alojamientos } from '../../models/alojamientos';
 })
 export class GestionAlojamientosComponent {
   alojamientos: Alojamientos[] = [];
+  alojamientosCompletos: Alojamientos[] = [];
   alojamientoForm: FormGroup;
+  destinos: Destinos[] = [];
 
   constructor(private apiService: ApiService, private router: Router, private fb: FormBuilder) {
     this.alojamientoForm = this.fb.group({
@@ -42,17 +45,83 @@ export class GestionAlojamientosComponent {
     );
   }
 
+  getAlojamientosCompletos() {
+    this.apiService.getAlojamientosCompletos().subscribe(
+      (data: any) => {
+        this.alojamientosCompletos = data.alojamientos.map((alojamiento: any) => ({
+          id_alojamiento: alojamiento.id_alojamiento,
+          nombre_alojamiento: alojamiento.nombre_alojamiento,
+          id_destino: alojamiento.id_destino,
+          precio_dia: alojamiento.precio_dia,
+          descripcion: alojamiento.descripcion,
+          id_usuario: alojamiento.id_usuario,
+          max_personas: alojamiento.max_personas,
+          direccion: alojamiento.direccion,
+          pais: alojamiento.pais,
+          ciudad: alojamiento.ciudad,
+          correo: alojamiento.correo
+        }));
+        console.log('Alojamientos completos:', this.alojamientosCompletos);
+      },
+      (error: any) => {
+        console.error('Error fetching alojamientos completos:', error);
+      }
+    );
+  }
+
+getDestinos() {
+    this.apiService.getDestinos().subscribe(
+      (response: { destinos: Destinos[] }) => {
+        this.destinos = response.destinos;
+      },
+      error => {
+        console.error('Error al obtener los destinos:', error);
+      }
+    );
+  }
+
+  editarAlojamiento(alojamiento: Alojamientos) {
+    alert('todavia no se puede editar');
+  }
+
+  eliminarAlojamiento(id_alojamiento: number) {
+    this.apiService.deleteAlojamiento(id_alojamiento).subscribe(
+      response => {
+        console.log('Alojamiento eliminado:', response);
+        this.getAlojamientos();
+        this.getAlojamientosCompletos(); 
+      },
+      error => {
+        console.error('Error deleting alojamiento:', error);
+      }
+    );
+  }
+
+
 
 
 
 
   onSubmit() {
     if (this.alojamientoForm.valid) {
-      const formData = this.alojamientoForm.value;
+      localStorage.setItem('id_usuario', '1'); 
+      const formData = {
+        id_alojamiento: this.alojamientoForm.value.id_alojamiento,
+        nombre_alojamiento: this.alojamientoForm.value.nombre_alojamiento,
+        id_destino: this.alojamientoForm.value.id_destino,
+        precio_dia: this.alojamientoForm.value.precio_dia,
+        descripcion: this.alojamientoForm.value.descripcion,
+        id_usuario: Number(localStorage.getItem('id_usuario')), 
+        max_personas: this.alojamientoForm.value.max_personas,
+        direccion: this.alojamientoForm.value.direccion
+      };
+      console.log('Form data:', formData); // Log the form data to the console
+
       this.apiService.postAlojamiento(formData).subscribe(
         response => {
           console.log('Alojamiento creado:', response);
           this.getAlojamientos(); // Refresh the list after creating a new alojamiento
+          this.getAlojamientosCompletos(); // Refresh the list after creating a new alojamiento
           this.alojamientoForm.reset(); // Reset the form after submission
         },
         error => {
@@ -62,5 +131,14 @@ export class GestionAlojamientosComponent {
     } else {
       console.error('Form is invalid');
     }
+  }
+
+
+
+
+  ngOnInit() {
+    this.getAlojamientosCompletos();
+    this.getAlojamientos();
+    this.getDestinos();
   }
 }

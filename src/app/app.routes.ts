@@ -13,6 +13,8 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AuthGuard } from './auth.guard';
 import { PostBlogComponent } from './components/post-blog/post-blog.component';
+import { PoliticaPrivacidadComponent } from './components/politica-privacidad/politica-privacidad.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 export const appRoutes: Routes = [
   { path: '', component: InicioComponent },
@@ -28,6 +30,8 @@ export const appRoutes: Routes = [
   { path: 'contacto', component: ContactoComponent, data: {title: 'CONTACTO'}},
   { path: 'perfil', component: PerfilComponent, data: {title: 'PERFIL'}},
   { path: 'post-blog', component: PostBlogComponent},
+  { path: 'politica-privacidad', component: PoliticaPrivacidadComponent, data: {title: 'POLÍTICA DE PRIVACIDAD'}},
+  { path: 'faq', component: FaqComponent, data: {title: 'FAQ'}},
   { path: '**', redirectTo: '' } 
 ];
 

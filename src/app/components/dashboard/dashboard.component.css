@@ -1,3 +1,127 @@
+/* General Styles for mat-accordion and mat-expansion-panel */
+mat-accordion {
+    margin: 1rem auto;
+    max-width: 900px;
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+mat-expansion-panel {
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+mat-expansion-panel-header {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+mat-expansion-panel-header:hover {
+    background-color: #2563eb;
+}
+
+mat-panel-title h2 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+mat-panel-description {
+    font-size: 0.9rem;
+    color: #d1d5db;
+}
+
+/* Table Styles */
+.actividades-table,
+.user-table,
+.alojamientos-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.actividades-table-header,
+.user-table thead,
+.alojamientos-table-header {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: bold;
+}
+
+.actividades-table-header-cell,
+.user-table th,
+.alojamientos-table-header-cell {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.actividades-table-cell,
+.user-table td,
+.alojamientos-table-cell {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.actividades-table-body .actividades-table-row:nth-child(even),
+.user-table tr:nth-child(even),
+.alojamientos-table-body .alojamientos-table-row:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.actividades-table-body .actividades-table-row:hover,
+.user-table tr:hover,
+.alojamientos-table-body .alojamientos-table-row:hover {
+    background-color: #f3f4f6;
+}
+
+/* Button Styles */
+.btn,
+.action-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.actividades-edit-btn,
+.alojamientos-edit-button {
+    background-color: #10b981;
+    color: white;
+}
+
+.actividades-edit-btn:hover,
+.alojamientos-edit-button:hover {
+    background-color: #059669;
+}
+
+.actividades-delete-btn,
+.alojamientos-delete-button {
+    background-color: #ef4444;
+    color: white;
+    margin-left: 0.5rem;
+}
+
+.actividades-delete-btn:hover,
+.alojamientos-delete-button:hover {
+    background-color: #dc2626;
+}
+
+/* Form Styles */
 .form-container {
     background-color: white;
     padding: 1.5rem;
@@ -35,8 +159,7 @@
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
-.form-button,
-.btn {
+.form-button {
     width: 100%;
     background-color: #3b82f6;
     color: white;
@@ -48,8 +171,7 @@
     transition: background-color 0.3s;
 }
 
-.form-button:hover,
-.btn:hover {
+.form-button:hover {
     background-color: #2563eb;
 }
 
@@ -57,125 +179,4 @@
     color: #ef4444;
     font-size: 0.8rem;
     margin-top: 0.3rem;
-}
-
-.user-list,
-.content {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #f9fafb;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.user-list-title {
-    font-size: 1.5rem;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.user-list-description {
-    font-size: 1rem;
-    color: #6b7280;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.user-table,
-.actividades-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-
-.user-table th,
-.user-table td,
-.actividades-table-header-cell,
-.actividades-table-cell {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.user-table th,
-.actividades-table-header {
-    background-color: #f3f4f6;
-    color: #374151;
-    font-weight: bold;
-}
-
-.user-table tr:nth-child(even),
-.actividades-table-body .actividades-table-row:nth-child(even) {
-    background-color: #f9fafb;
-}
-
-.actividades-table-body .actividades-table-row:hover {
-    background-color: #f3f4f6;
-}
-
-.action-button,
-.actividades-edit-btn,
-.actividades-delete-btn {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.edit-button,
-.actividades-edit-btn {
-    background-color: #10b981;
-    color: white;
-}
-
-.edit-button:hover,
-.actividades-edit-btn:hover {
-    background-color: #059669;
-}
-
-.delete-button,
-.actividades-delete-btn {
-    background-color: #ef4444;
-    color: white;
-    margin-left: 0.5rem;
-}
-
-.delete-button:hover,
-.actividades-delete-btn:hover {
-    background-color: #dc2626;
-}
-
-.collapsible {
-    background-color: #3b82f6;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    margin-bottom: 1rem;
-    margin: 2%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.collapsible:hover {
-    background-color: #2563eb;
-}
-
-.content.active {
-    display: block;
-}
-
-.actividades-actions {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    justify-content: center;
-    align-items: center;
 }

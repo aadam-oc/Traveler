@@ -3,7 +3,7 @@
     <div class="header-container">
       <a class="logo" routerLink="/inicio">
         <img src="logo.png" alt="Traveller Logo">
-        <span>TRAVELLER</span>
+        <p>TRAVELLER</p>
       </a>
       <nav class="nav-menu">
         <ul>
@@ -30,6 +30,6 @@
   
   <!-- Hero con imagen de fondo -->
   <div class="hero-section">
-    <h1>{{ pageTitle }}</h1>
+    <h1 [class.fade-in]="animateTitle">{{ pageTitle }}</h1>
   </div>
 </div>

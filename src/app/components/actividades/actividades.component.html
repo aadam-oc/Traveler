@@ -1,10 +1,11 @@
 <div class="actividad" *ngFor="let actividad of actividades | paginate: { itemsPerPage: 5, currentPage: p }">
-    <img src="{{actividad.nombre_imagen_actividad}}" alt="Escalada" />
+    <img class="fto-actividad" src="{{actividad.nombre_imagen_actividad}}" alt="Escalada" />
     <div class="contenido">
         <div class="titulo">Nombre tipo actividad:
             {{actividad.nombre_tipo_actividad}}</div>
-        <p>pais: {{actividad.pais}} - ciudad: {{actividad.ciudad}}</p>
-        <p>descripcion: {{actividad.descripcion}}</p>
+        <p>País: {{actividad.pais}}</p>
+        <p>Ciudad: {{actividad.ciudad}}</p>
+        <p>Descripción: {{actividad.descripcion}}</p>
         <div class="precio">{{actividad.precio}}€/H</div>
     </div>
 </div>

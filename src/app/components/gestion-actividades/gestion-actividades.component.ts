@@ -60,7 +60,6 @@ export class GestionActividadesComponent {
 
   getAllActividades() {
     this.apiService.getActividadesJoin().subscribe((response: any) => {
-      console.log("Datos de la API:", response);
       this.actividadesCompletas = response.actividades;
     });
   }
