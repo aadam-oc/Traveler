@@ -14,7 +14,7 @@ export class ForoComponent {
   comments = [
     {
       text: 'Me parece una página increíble, me ha servido para irme de viaje con mis amigos.',
-      author: 'Jorge Pastor',
+      author: 'Aleix Martinez',
       image: 'https://randomuser.me/api/portraits/men/1.jpg',
       likes: 0,
       dislikes: 0,

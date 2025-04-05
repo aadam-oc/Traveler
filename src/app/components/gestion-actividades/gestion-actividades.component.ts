@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Actividad } from '../../models/actividad';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TipoActividad } from '../../models/tipo-actividad';
@@ -69,15 +68,18 @@ export class GestionActividadesComponent {
   }
 
   eliminarActividad(actividad: Actividad) {
-    this.apiService.deleteActividad(actividad.id_actividad).subscribe(
-      (response) => {
-        console.log('Actividad eliminada:', response);
-        this.actividades = this.actividades.filter(a => a.id_actividad !== actividad.id_actividad); // Actualizar la lista de actividades
-      },
-      error => {
-        console.error('Error al eliminar la actividad:', error);
-      }
-    );
+    if (!confirm(`¿Estás seguro de que deseas eliminar la actividad ${actividad.descripcion}?`)) {
+      this.apiService.deleteActividad(actividad.id_actividad).subscribe(
+        (response) => {
+          console.log('Actividad eliminada:', response);
+          this.actividades = this.actividades.filter(a => a.id_actividad !== actividad.id_actividad); // Actualizar la lista de actividades
+        },
+        error => {
+          console.error('Error al eliminar la actividad:', error);
+        }
+      );
+    }
+    
   }
   onSubmit() {
     if (this.formCrearActividad.valid) {

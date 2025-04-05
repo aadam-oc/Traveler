@@ -13,8 +13,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  
-
 //Autorizacion
   //register
   registerUser(user: any): Observable<any> {
@@ -78,8 +76,8 @@ getTipoActividadById(id: number): Observable<any> {
 }
 
 //crear tipo_actividad
-postTipoActividad(tipo_actividad: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/tipo_actividad`, tipo_actividad);
+postTipoActividad(nombre_tipo_actividad: any): Observable<any> {
+  return this.http.post(`${this.apiUrl}/traveler/tipo_actividad`, nombre_tipo_actividad);
 }
 
 //actualizar tipo_actividad

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -54,15 +53,18 @@ export class GestionUsuariosComponent {
   }
 
   onDelete(user: Usuario) {
-    this.apiService.deleteUsuario(user.id_usuario).subscribe(
-      response => {
-        console.log('Usuario eliminado:', response);
-        this.getUsuarios();
-      },
-      error => {
-        console.error('Error al eliminar el usuario:', error);
-      }
-    );
+    if (!confirm(`¿Estás seguro de que deseas eliminar el usuario ${user.correo}?`)) {
+      this.apiService.deleteUsuario(user.id_usuario).subscribe(
+        response => {
+          console.log('Usuario eliminado:', response);
+          this.getUsuarios();
+        },
+        error => {
+          console.error('Error al eliminar el usuario:', error);
+        }
+      );
+    }
+    
   }
   
 

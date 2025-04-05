@@ -1,4 +1,3 @@
-/* General Styles for mat-accordion and mat-expansion-panel */
 mat-accordion {
     margin: 1rem auto;
     max-width: 900px;
@@ -16,7 +15,7 @@ mat-expansion-panel {
 }
 
 mat-expansion-panel-header {
-    background-color: #3b82f6;
+    background-color: #095B02;
     color: white;
     font-weight: bold;
     padding: 1rem;
@@ -25,7 +24,7 @@ mat-expansion-panel-header {
 }
 
 mat-expansion-panel-header:hover {
-    background-color: #2563eb;
+    background-color: #095B02;
 }
 
 mat-panel-title h2 {
@@ -38,7 +37,6 @@ mat-panel-description {
     color: #d1d5db;
 }
 
-/* Table Styles */
 .actividades-table,
 .user-table,
 .alojamientos-table {
@@ -87,7 +85,6 @@ mat-panel-description {
     background-color: #f3f4f6;
 }
 
-/* Button Styles */
 .btn,
 .action-button {
     padding: 0.5rem 1rem;
@@ -121,7 +118,6 @@ mat-panel-description {
     background-color: #dc2626;
 }
 
-/* Form Styles */
 .form-container {
     background-color: white;
     padding: 1.5rem;
@@ -155,7 +151,7 @@ mat-panel-description {
 .form-input:focus,
 .form-select:focus,
 .form-control:focus {
-    border-color: #3b82f6;
+    border-color: #095B02;
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
@@ -179,4 +175,273 @@ mat-panel-description {
     color: #ef4444;
     font-size: 0.8rem;
     margin-top: 0.3rem;
+}
+
+.gestion-roles-container {
+    margin: 2rem auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gestion-roles-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.gestion-roles-form {
+    margin-bottom: 2rem;
+}
+
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    color: #4a4a4a;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.form-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.btn-crear-rol {
+    background-color: #10b981;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-crear-rol:hover {
+    background-color: #059669;
+}
+
+.divider-roles {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+.roles-table-container {
+    margin-top: 1rem;
+}
+
+.roles-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.roles-table-head {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: bold;
+}
+
+.roles-table-header {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.roles-table-cell {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.roles-table-row:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.roles-table-row:hover {
+    background-color: #f3f4f6;
+}
+
+.btn-editar-rol {
+    background-color: #3b82f6;
+    color: white;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-editar-rol:hover {
+    background-color: #2563eb;
+}
+
+.btn-eliminar-rol {
+    background-color: #ef4444;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-eliminar-rol:hover {
+    background-color: #dc2626;
+}
+
+.no-roles-message {
+    text-align: center;
+    color: #6b7280;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.gestion-destinos-container {
+    margin: 2rem auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gestion-destinos-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.destino-form {
+    margin-bottom: 2rem;
+}
+
+.form-field-pais,
+.form-field-ciudad {
+    margin-bottom: 1rem;
+}
+
+.submit-button {
+    background-color: #10b981;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #059669;
+}
+
+.cancel-button {
+    background-color: #ef4444;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 0.5rem;
+}
+
+.cancel-button:hover {
+    background-color: #dc2626;
+}
+
+.destinos-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.table-header {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: bold;
+}
+
+.table-header-cell {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-cell {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-row:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.table-row:hover {
+    background-color: #f3f4f6;
+}
+
+.edit-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 0.5rem;
+}
+
+.edit-button:hover {
+    background-color: #2563eb;
+}
+
+.delete-button {
+    background-color: #ef4444;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #dc2626;
 }

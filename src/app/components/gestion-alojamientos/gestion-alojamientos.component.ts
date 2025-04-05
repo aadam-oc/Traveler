@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { Actividad } from '../../models/actividad';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Alojamientos } from '../../models/alojamientos';
 import { Destinos } from '../../models/destinos';
@@ -85,16 +83,19 @@ getDestinos() {
   }
 
   eliminarAlojamiento(id_alojamiento: number) {
-    this.apiService.deleteAlojamiento(id_alojamiento).subscribe(
-      response => {
-        console.log('Alojamiento eliminado:', response);
-        this.getAlojamientos();
-        this.getAlojamientosCompletos(); 
-      },
-      error => {
-        console.error('Error deleting alojamiento:', error);
-      }
-    );
+    if (!confirm(`¿Estás seguro de que deseas eliminar el alojamiento con ID ${id_alojamiento}?`)) {
+      this.apiService.deleteAlojamiento(id_alojamiento).subscribe(
+        response => {
+          console.log('Alojamiento eliminado:', response);
+          this.getAlojamientos();
+          this.getAlojamientosCompletos(); 
+        },
+        error => {
+          console.error('Error deleting alojamiento:', error);
+        }
+      );
+    }
+    
   }
 
 

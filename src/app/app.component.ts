@@ -6,7 +6,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { OpenaiService } from './services/openai.service';
 import { ChatComponent } from './components/chat/chat.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +26,7 @@ export class AppComponent implements OnInit {
   
   constructor(private openAiService: OpenaiService,) {}
 
-  ngOnInit() {
-    this.openAiService.getHaiku().subscribe((response: { choices: { message: { content: string } }[] }) => {
-      this.responseText = response.choices[0].message.content; 
-    });
+  ngOnInit(): void {
+    // Initialization logic here
   }
 }

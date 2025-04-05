@@ -1,17 +1,18 @@
 <div class="chat-container">
-    <button class="chat-toggle-btn" (click)="toggleChat()">💬 Chat</button>
-    <div class="chat-window" *ngIf="isChatOpen">
-      <div class="chat-header">
-        <h3>Chat</h3>
-        <button class="close-btn" (click)="toggleChat()">✖</button>
-      </div>
-      <div class="chat-body">
-        <p>Bienvenido al chat. ¿En qué podemos ayudarte?</p>
-        <!-- Aquí puedes agregar más contenido del chat -->
-      </div>
-      <div class="chat-footer">
-        <input type="text" placeholder="Escribe un mensaje..." />
-        <button>Enviar</button>
+  <button class="chat-toggle-btn" (click)="toggleChat()">💬 Chat</button>
+  <div class="chat-window" *ngIf="isChatOpen">
+    <div class="chat-header">
+      <h3>Asistente</h3>
+      <button class="close-btn" (click)="toggleChat()">✖</button>
+    </div>
+    <div class="chat-body">
+      <div *ngFor="let message of messages" [ngClass]="{'user-message': message.sender === 'User', 'bot-message': message.sender === 'Bot'}">
+        <strong>{{ message.sender }}:</strong> {{ message.text }}
       </div>
     </div>
+    <div class="chat-footer">
+      <input type="text" [(ngModel)]="newMessage" placeholder="Escribe un mensaje..." />
+      <button (click)="sendMessage()">Enviar</button>
+    </div>
   </div>
+</div>

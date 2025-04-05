@@ -30,7 +30,7 @@ export class HeaderComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      this.pageTitle = this.route.root.firstChild?.snapshot.data['title'] || 'Bienvenido';
+      this.pageTitle = this.route.root.firstChild?.snapshot.data['title'] || '';
 
       // Forzar reactivación de la animación
       this.animateTitle = false;
