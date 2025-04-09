@@ -1,17 +1,62 @@
-<div class="actividad" *ngFor="let actividad of actividades | paginate: { itemsPerPage: 5, currentPage: p }">
-    <img class="fto-actividad" src="{{actividad.nombre_imagen_actividad}}" alt="Escalada" />
-    <div class="contenido">
-        <div class="titulo">Nombre tipo actividad:
-            {{actividad.nombre_tipo_actividad}}</div>
-        <p>País: {{actividad.pais}}</p>
-        <p>Ciudad: {{actividad.ciudad}}</p>
-        <p>Descripción: {{actividad.descripcion}}</p>
-        <div class="precio">{{actividad.precio}}€/H</div>
+<div class="layout">
+    <form [formGroup]="form" class="form-container">
+        <!-- País -->
+        <div class="form-group">
+            <label for="pais">🌍 País:</label>
+            <select formControlName="pais" id="pais">
+                <option value>-- Selecciona un país --</option>
+                <option *ngFor="let country of paises" [value]="country">{{
+                    country
+                    }}</option>
+            </select>
+        </div>
+
+        <!-- Ciudades del país seleccionado -->
+        <div *ngIf="ciudades.length > 0" class="tree-container">
+            <div class="tree-node expand">
+                <span class="tree-label">📁 {{ form.value.pais }}</span>
+                <ul class="tree-children">
+                    <li *ngFor="let city of ciudades">
+                        <label>
+                            <input type="radio" formControlName="ciudad"
+                                [value]="city" name="ciudad" />
+                            {{ city }}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Rango de precio -->
+        <div class="form-group">
+            <label for="priceRange">💰 Rango de Precio:</label>
+            <input type="range" formControlName="priceRange" id="priceRange"
+                min="15" max="200" step="5" />
+            <span>0€ - {{ form.value.priceRange }}€</span>
+        </div>
+    </form>
+
+    <div class="tarjetas-grid">
+        <!-- Lista de actividades filtradas -->
+        <div class="actividad expand"
+            *ngFor="let actividad of actividadesFiltradas | paginate: { itemsPerPage: 6, currentPage: p }">
+            <img class="fto-actividad" [src]="actividad.nombre_imagen_actividad"
+                alt="Actividad" />
+            <div class="contenido">
+                <div class="titulo">{{ actividad.nombre_tipo_actividad }}</div>
+                <p>{{ actividad.pais }}, {{ actividad.ciudad }}</p>
+                <p class="descripcion">Descripción: {{ actividad.descripcion
+                    }}</p>
+                <div class="precio">{{ actividad.precio }}€/H</div>
+            </div>
+        </div>
+        <!-- Paginación -->
+        <div class="paginacion">
+            <pagination-controls (pageChange)="p = $event"
+                previousLabel="Anterior"
+                nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
     </div>
-</div>
 
-<div class="paginacion">
-    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente">
-
-    </pagination-controls>
 </div>

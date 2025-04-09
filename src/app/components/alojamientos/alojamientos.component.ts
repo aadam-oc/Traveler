@@ -1,49 +1,53 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
+import { Alojamientos } from '../../models/alojamientos';
+import { Destinos } from '../../models/destinos';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-alojamientos',
-  imports: [CommonModule],
+  imports: [CommonModule, NgxPaginationModule],
   templateUrl: './alojamientos.component.html',
   styleUrls: ['./alojamientos.component.css']
 })
 export class AlojamientosComponent {
-  alojamientos = [
-    {
-      titulo: "Hotel Playa",
-      descripcionCorta: "Hermoso hotel con vista al mar.",
-      descripcion: "Este hotel cuenta con habitaciones de lujo y una piscina infinita con vista al mar.",
-      imagenes: [
-        "https://placehold.co/600x400?text=Cabaña",
-        "https://placehold.co/600x400?text=Bosque",
-        "https://placehold.co/600x400?text=Refugio"
-      ]
-    },
-    {
-      titulo: "Cabaña en el bosque",
-      descripcionCorta: "Un refugio en medio de la naturaleza.",
-      descripcion: "Escápate a esta cabaña rodeada de árboles, ideal para descansar y conectar con la naturaleza.",
-      imagenes: [
-        "https://placehold.co/600x400?text=Cabaña",
-        "https://placehold.co/600x400?text=Bosque",
-        "https://placehold.co/600x400?text=Refugio"
-      ]
-    },
-    {
-      titulo: "Cabaña en el bosque 2",
-      descripcionCorta: "Un refugio en medio de la naturaleza.",
-      descripcion: "Escápate a esta cabaña rodeada de árboles, ideal para descansar y conectar con la naturaleza.",
-      imagenes: [
-        "https://placehold.co/600x400?text=Cabaña",
-        "https://placehold.co/600x400?text=Bosque",
-        "https://placehold.co/600x400?text=Refugio"
-      ]
-    }
-  ];
+  p: number = 1;
+
+  alojamientos : Alojamientos[] = [];
+  destinos : Destinos[] = [];
 
   modalAbierto: boolean = false;
   alojamientoSeleccionado: any = null;
   imagenActual: number = 0;
+
+  constructor(private apiService: ApiService, private router: Router) { }
+
+  ngOnInit() {
+    this.apiService.getAlojamientosCompletos().subscribe(
+      (data: any) => {
+        this.alojamientos = data.alojamientos.map((alojamiento: any) => ({
+          id_alojamiento: alojamiento.id_alojamiento,
+          nombre_alojamiento: alojamiento.nombre_alojamiento,
+          id_destino: alojamiento.id_destino,
+          precio_dia: alojamiento.precio_dia,
+          descripcion: alojamiento.descripcion,
+          id_usuario: alojamiento.id_usuario,
+          max_personas: alojamiento.max_personas,
+          direccion: alojamiento.direccion,
+          pais: alojamiento.pais,
+          ciudad: alojamiento.ciudad,
+          correo: alojamiento.correo,
+          imagenes: alojamiento.imagenes || [] // Asegurarse de que haya una propiedad de imágenes
+        }));
+        console.log('Alojamientos completos:', this.alojamientos);
+      },
+      (error: any) => {
+        console.error('Error fetching alojamientos completos:', error);
+      }
+    );
+  }
 
   abrirModal(alojamiento: any) {
     this.alojamientoSeleccionado = alojamiento;
@@ -57,10 +61,12 @@ export class AlojamientosComponent {
 
   cambiarImagen(direccion: number) {
     const totalImagenes = this.alojamientoSeleccionado.imagenes.length;
-    this.imagenActual = (this.imagenActual + direccion + totalImagenes) % totalImagenes;
+    if (totalImagenes > 0) {
+      this.imagenActual = (this.imagenActual + direccion + totalImagenes) % totalImagenes;
+    }
   }
 
   agregarAlCarrito(alojamiento: any) {
-    alert(`${alojamiento.titulo} añadido al carrito`);
+    alert(`${alojamiento.nombre_alojamiento} añadido al carrito`);
   }
 }

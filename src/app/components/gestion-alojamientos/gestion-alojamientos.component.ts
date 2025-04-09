@@ -59,7 +59,7 @@ export class GestionAlojamientosComponent {
           ciudad: alojamiento.ciudad,
           correo: alojamiento.correo
         }));
-        console.log('Alojamientos completos:', this.alojamientosCompletos);
+        //console.log('Alojamientos completos:', this.alojamientosCompletos);
       },
       (error: any) => {
         console.error('Error fetching alojamientos completos:', error);

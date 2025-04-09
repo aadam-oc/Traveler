@@ -11,30 +11,38 @@
         <p><strong>📍</strong> Carrer de Monlau 6 08027, Barcelona</p>
     </div>
     <div class="form-container">
-        <form>
+        <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
             <label>Nombre*</label>
-            <input type="text" required>
+            <input type="text" formControlName="nombre" required>
 
-            <label>Apellido*</label>
-            <input type="text" required>
+            <label>Primer Apellido*</label>
+            <input type="text" formControlName="apellido1" required>
+
+            <label>Segundo Apellido*</label>
+            <input type="text" formControlName="apellido2" required>
 
             <label>Correo electrónico*</label>
-            <input type="email" required>
+            <input type="email" formControlName="correo" required>
 
-            <label>Número de teléfono</label>
-            <input type="tel">
+            <label>Número de teléfono*</label>
+            <input type="tel" formControlName="telefono" required>
 
             <br>
 
-            <p>Seleccione el motivo:</p>
-            <div class="radio-group">
-                <input type="radio" name="motivo1"> <label>Quiero más info</label> 
-                <input type="radio" name="motivo2"> <label>Error</label> 
-                <input type="radio" name="motivo3"> <label>Aclaración</label> 
-            </div>
+            <label for="asunto">Seleccione el motivo:</label>
+            <select id="asunto" formControlName="asunto" required>
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option value="Quiero más info">Quiero más info</option>
+                <option value="Error">Error</option>
+                <option value="Aclaración">Aclaración</option>
+                <option value="Solicitar rol arrendador">Solicitar rol arrendador</option>
+                <option value="Solicitar rol actividades">Solicitar rol actividades</option>
+                <option value="Solicitar rol arrendador y actividades">Solicitar rol arrendador y actividades</option>
+            </select>
 
-            <textarea required></textarea>
-            <button type="submit">Send Message</button>
+            <label>Mensaje*</label>
+            <textarea formControlName="mensaje" required></textarea>
+            <button type="submit" [disabled]="!contactoForm.valid">Send Message</button>
         </form>
     </div>
 </div>

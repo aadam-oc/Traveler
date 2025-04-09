@@ -266,7 +266,21 @@ deleteRol(id: number): Observable<any> {
 
 
   
-  
+//contacto
+
+getContactos(): Observable<any> {
+  return this.http.get(`${this.apiUrl}/contacto/contacto`);
+}
+
+postContacto(contacto: any): Observable<any> {
+  return this.http.post(`${this.apiUrl}/contacto/contacto`, contacto);
+}
+
+resuelto(id: number): Observable<any> {
+  return this.http.put(`${this.apiUrl}/contacto/contacto/resuelto/${id}`, {});
+}
+
+
 
   
   
