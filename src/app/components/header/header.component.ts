@@ -12,6 +12,7 @@ import { filter } from 'rxjs';
 })
 export class HeaderComponent {
 
+  isHomePage: boolean = false;
   pageTitle: string = 'Bienvenido';
   animateTitle: boolean = true;
 
@@ -29,15 +30,19 @@ export class HeaderComponent {
   ngOnInit(): void {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
+    ).subscribe((event: NavigationEnd) => {
+      const currentUrl = event.urlAfterRedirects;
+      console.log('URL actual:', currentUrl); // 👈 Agregado
+  
       this.pageTitle = this.route.root.firstChild?.snapshot.data['title'] || '';
-
-      // Forzar reactivación de la animación
+      this.isHomePage = currentUrl === '/'; // 👈 Verifica que sea la ruta correcta
+  
       this.animateTitle = false;
       setTimeout(() => {
         this.animateTitle = true;
       }, 10);
     });
   }
+  
 
 }

@@ -38,8 +38,7 @@
 
     <div class="tarjetas-grid">
         <!-- Lista de actividades filtradas -->
-        <div class="actividad expand"
-            *ngFor="let actividad of actividadesFiltradas | paginate: { itemsPerPage: 6, currentPage: p }">
+        <div class="actividad expand" *ngFor="let actividad of actividadesFiltradas | paginate: { itemsPerPage: 6, currentPage: p }">
             <img class="fto-actividad" [src]="actividad.nombre_imagen_actividad"
                 alt="Actividad" />
             <div class="contenido">

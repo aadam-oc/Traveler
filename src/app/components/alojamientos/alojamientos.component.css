@@ -111,8 +111,9 @@ body {
   
   .modal-container {
     background: white;
-    width: 60%;
-    max-width: 900px;
+    width: 70%;
+    max-width: 1000px;
+    height: 60%;
     padding: 20px;
     border-radius: 10px;
     position: relative;
@@ -120,28 +121,41 @@ body {
   
   .close-btn {
     position: absolute;
+    color: #fff;
     top: 10px;
     right: 15px;
     border: none;
     background: transparent;
     font-size: 20px;
     cursor: pointer;
+    padding: 20px;
   }
   
   .modal-content {
     display: flex;
     gap: 20px;
+    height: 100%;
   }
   
-  /* --- Estilos del carrusel (izquierda) --- */
+  /* --- Estilos del carrusy: flex;
+    align-items: center;
+    justify-content: center;el (izquierda) --- */
   .carousel {
     position: relative;
     width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
   
   .carousel img {
     width: 100%;
+    height: auto;
     border-radius: 10px;
+    max-height: 100%;
+    object-fit: cover;
   }
   
   .prev,
@@ -169,11 +183,45 @@ body {
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    background-color: #143D2C;
+    padding: 20px;
+    color: #fff;
+    height: 100%;
   }
-  
-  .modal-info h2 {
-    margin-bottom: 10px;
+
+  .titulo-modal {
+    margin-bottom: 5px;
+  }
+
+  .descripcion-title {
+    margin-top: 20px;
+    font-size: 1.5rem;
+  }
+
+  .precio-persona-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+
+  .precio-persona {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .max-personas {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .icono-personas {
+    width: 32px;
+    height: auto;
+
   }
   
   .add-cart-btn {

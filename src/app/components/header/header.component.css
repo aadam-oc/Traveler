@@ -102,6 +102,11 @@ header {
     font-size: 36px;
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    
+}
+
+.home-hero {
+    height: 100vh !important;
 }
 
 @keyframes fadeIn {

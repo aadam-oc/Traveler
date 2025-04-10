@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Alojamientos } from '../../models/alojamientos';
 import { Destinos } from '../../models/destinos';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ImagenesAlojamientos } from '../../models/imagenes-alojamientos';
 
 @Component({
   selector: 'app-alojamientos',
@@ -14,9 +15,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class AlojamientosComponent {
   p: number = 1;
-
-  alojamientos : Alojamientos[] = [];
-  destinos : Destinos[] = [];
+  imagenes: ImagenesAlojamientos[] = [];
+  alojamientos: Alojamientos[] = [];
+  destinos: Destinos[] = [];
 
   modalAbierto: boolean = false;
   alojamientoSeleccionado: any = null;
@@ -24,9 +25,31 @@ export class AlojamientosComponent {
 
   constructor(private apiService: ApiService, private router: Router) { }
 
+
+  getImagenesAlojamientos(id_alojamiento: number): ImagenesAlojamientos[] {
+    let imagenesAlojamientos: ImagenesAlojamientos[] = [];
+
+    this.apiService.getImagenesAlojamientos(id_alojamiento).subscribe(data => {
+      // Asignar las imágenes a la variable de clase
+      
+      imagenesAlojamientos= data.imagenes
+      
+      
+      console.log('Imagenes de alojamientos:', imagenesAlojamientos);
+    });
+    
+    return imagenesAlojamientos;
+  }
+
+
+  
+
+
   ngOnInit() {
+    
     this.apiService.getAlojamientosCompletos().subscribe(
       (data: any) => {
+        // Obtener las imágenes de los alojamientos
         this.alojamientos = data.alojamientos.map((alojamiento: any) => ({
           id_alojamiento: alojamiento.id_alojamiento,
           nombre_alojamiento: alojamiento.nombre_alojamiento,
@@ -39,8 +62,15 @@ export class AlojamientosComponent {
           pais: alojamiento.pais,
           ciudad: alojamiento.ciudad,
           correo: alojamiento.correo,
-          imagenes: alojamiento.imagenes || [] // Asegurarse de que haya una propiedad de imágenes
+          imagenes: [] // Inicializar como un array vacío
         }));
+
+        // Obtener imágenes para cada alojamiento
+        this.alojamientos.forEach((alojamiento) => {
+          this.apiService.getImagenesAlojamientos(alojamiento.id_alojamiento).subscribe(data => {
+            alojamiento.imagenes = data.imagenes; // Asignar las imágenes al alojamiento
+          });
+        });
         console.log('Alojamientos completos:', this.alojamientos);
       },
       (error: any) => {

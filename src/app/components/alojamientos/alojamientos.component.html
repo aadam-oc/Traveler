@@ -1,7 +1,7 @@
 <div class="card-container">
   <div class="card-deck">
     <div class="card" *ngFor="let alojamiento of alojamientos | paginate: { itemsPerPage: 6, currentPage: p }">
-      <img [src]="alojamiento.nombre_alojamiento" class="card-img-top" alt="Alojamiento">
+      <img [src]="alojamiento.imagenes[0]" class="card-img-top" alt="Alojamiento">
       <div class="card-body">
         <h5 class="card-title">{{ alojamiento.nombre_alojamiento }}</h5>
         <p class="card-text">{{ alojamiento.descripcion }}</p>
@@ -29,7 +29,7 @@
       <!-- Carrousel de imágenes -->
       <div class="carousel">
         <img *ngIf="alojamientoSeleccionado?.imagenes?.length > 0" 
-             [src]="alojamientoSeleccionado?.imagenes[imagenActual]" 
+             [src]="alojamientoSeleccionado.imagenes[imagenActual].url" 
              alt="Imagen del alojamiento">
         <button *ngIf="alojamientoSeleccionado?.imagenes?.length > 1" 
                 class="prev" (click)="cambiarImagen(-1)">&#10094;</button>
@@ -40,11 +40,23 @@
       <!-- Información del alojamiento -->
       <div class="modal-info">
         <h2 class="titulo-modal">{{ alojamientoSeleccionado.nombre_alojamiento }}</h2>
-        <p class="descripcion-modal">{{ alojamientoSeleccionado.descripcion }}</p>
-        <p class="precio-modal">{{ alojamientoSeleccionado.precio_dia }}€/dia</p>
-        <button class="add-cart-btn" (click)="agregarAlCarrito(alojamientoSeleccionado)">
-          Añadir al carrito
-        </button>
+        <p class="ciudad-pais">{{alojamientoSeleccionado.pais}}, {{alojamientoSeleccionado.ciudad}}</p>
+        <div>
+          <p class="descripcion-title"><strong>Descripción</strong></p>
+          <p class="descripcion-modal">{{ alojamientoSeleccionado.descripcion }}</p>
+        </div>
+        <div class="precio-persona-container">
+          <div class="precio-persona">
+            <p class="precio-modal">{{ alojamientoSeleccionado.precio_dia }}€/dia</p>
+            <p class="max-personas">
+              <img class="icono-personas" src="http://172.17.131.14:3000/uploads/1744294057980.png" alt="icono-personas">
+              {{alojamientoSeleccionado.max_personas}}</p>
+          </div>
+          <button class="add-cart-btn" (click)="agregarAlCarrito(alojamientoSeleccionado)">
+            ¡Rervar Ahora!
+          </button>
+        </div>
+
       </div>
     </div>
   </div>

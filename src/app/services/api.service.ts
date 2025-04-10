@@ -281,7 +281,10 @@ resuelto(id: number): Observable<any> {
 }
 
 
-
+//imagenes alojamientos
+getImagenesAlojamientos(id_alojamiento: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/traveler/imagenes_alojamientos/alojamiento/${id_alojamiento}`);
+}
   
   
   

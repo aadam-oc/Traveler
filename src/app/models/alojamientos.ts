@@ -1,3 +1,5 @@
+import { ImagenesAlojamientos } from "./imagenes-alojamientos";
+
 export interface Alojamientos {
     id_alojamiento: number;
     nombre_alojamiento: string;
@@ -10,4 +12,5 @@ export interface Alojamientos {
     correo: string;
     max_personas: number;
     direccion: string;
+    imagenes: ImagenesAlojamientos[]; 
 }

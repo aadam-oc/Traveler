@@ -48,8 +48,8 @@ export class GestionUsuariosComponent {
     );
   }
 
-  onEdit( user: Usuario) {
-    alert('Todavia no se puede editar');
+  onEdit( id_usuario: number) {
+    this.router.navigate(['/editar-usuario', id_usuario]);
   }
 
   onDelete(user: Usuario) {
