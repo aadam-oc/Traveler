@@ -28,11 +28,6 @@ export class EditarUsuarioComponent {
   
 
   onSubmit(): void {
-    if (this.usuarioForm.valid) {
-      console.log('Datos del formulario:', this.usuarioForm.value);
-      // Implementa la lógica para guardar los datos del usuario
-    } else {
-      console.log('Formulario inválido');
-    }
+    
   }
 }
