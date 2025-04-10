@@ -41,6 +41,3 @@ testem.log
 .DS_Store
 Thumbs.db
 
-
-# api chat
-./src/app/services/openai.service.ts
