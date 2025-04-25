@@ -1,7 +1,20 @@
 import { Component } from '@angular/core';
+import { HostListener } from '@angular/core';
+
+declare global {
+  interface Window {
+    chatbase?: any;
+  }
+}
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 import { Actividad } from '../../models/actividad';
+import { Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+
 @Component({
   selector: 'app-inicio',
   imports: [CommonModule],
@@ -11,36 +24,12 @@ import { Actividad } from '../../models/actividad';
 export class InicioComponent {
   actividades: Actividad[] = [];
   actividad: any;
+  mostrarBoton: boolean = false;
 
-  constructor(private apiService: ApiService) { }
 
-  scrollToSection(): void {
-    const target = document.getElementById('destacados');
-    if (!target) return;
+  constructor(private renderer: Renderer2, private apiService: ApiService) { }
   
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 1000; // duración de 1 segundo
-    let start: number | null = null;
-  
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      const percent = Math.min(progress / duration, 1);
-      window.scrollTo(0, startPosition + distance * easeInOutCubic(percent));
-      if (progress < duration) {
-        requestAnimationFrame(step);
-      }
-    };
-  
-    // Función de aceleración suave (puedes probar otras como easeOutQuad)
-    const easeInOutCubic = (t: number): number =>
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  
-    requestAnimationFrame(step);
-  }
-  
+
 
   getActividades() {
     this.apiService.getActividadesJoin().subscribe((response: any) => {
@@ -51,7 +40,50 @@ export class InicioComponent {
     });
   };
 
+
   ngOnInit() {
     this.getActividades();
+    if (!window.chatbase || (window as any).chatbase("getState") !== "initialized") {
+      (window as any).chatbase = (...args: any[]) => {
+        if (!(window as any).chatbase.q) {
+          (window as any).chatbase.q = [];
+        }
+        (window as any).chatbase.q.push(args);
+      };
+      (window as any).chatbase = new Proxy((window as any).chatbase, {
+        get(target, prop) {
+          if (prop === "q") {
+            return target.q;
+          }
+          return (...args: any[]) => target(prop, ...args);
+        }
+      });
+    }
+
+    const script = this.renderer.createElement('script');
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "LvNA3gEjb8MdrjfaWJ3w9";
+    script.setAttribute('domain', 'www.chatbase.co');
+    this.renderer.appendChild(document.body, script);
   }
+
+  scrollToSection(): void {
+    const element = document.getElementById('destacados');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.mostrarBoton = scrollPosition > 300; 
+  }
+
+scrollToTop(): void {
+  const element = document.getElementById('hero-content');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 }

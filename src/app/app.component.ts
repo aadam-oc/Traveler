@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ChatComponent } from './components/chat/chat.component';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     RouterOutlet,
+    MatDialogModule,
   ],
   providers: [],
   templateUrl: './app.component.html',

@@ -39,7 +39,7 @@ export class GestionTiposActividadesComponent {
   }
 
   eliminarTipoActividad(id_tipo_actividad : number) {
-    if (!confirm(`¿Estás seguro de que deseas eliminar el tipo de actividad con ID ${id_tipo_actividad}?`)) {
+    if (confirm(`¿Estás seguro de que deseas eliminar el tipo de actividad con ID ${id_tipo_actividad}?`)) {
       this.apiService.deleteTipoActividad(id_tipo_actividad).subscribe(
         response => {
           console.log('Tipo de actividad eliminado:', response);

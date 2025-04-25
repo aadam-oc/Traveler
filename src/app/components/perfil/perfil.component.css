@@ -76,6 +76,7 @@
     background-color: #0D3C00; /* Fondo del enlace */
     border-radius: 10px; /* Bordes redondeados */
     transition: background-color 0.3s ease; /* Transición suave para hover */
+    margin-bottom: 20px;
 }
 
 .dashboard-container a:hover {

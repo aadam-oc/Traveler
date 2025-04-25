@@ -1,43 +1,38 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { OpenaiService } from '../../services/openai.service';
-import { NgModel } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms'; // Import FormsModule for template-driven forms
+import { CommonModule } from '@angular/common'; // Import CommonModule for ngIf, ngFor, etc.
+// Removed FormsModule import as it should be included in the NgModule instead.
 
 @Component({
   selector: 'app-chat',
-  imports: [CommonModule, FormsModule],
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  imports: [
+    FormsModule, 
+    CommonModule 
+  ],
 })
 export class ChatComponent {
-  isChatOpen = false;
-  messages: { sender: string; text: string }[] = [];
-  newMessage: string = '';
+  contactoSeleccionado: any;
+  mensajes: { sender: string; text: string }[] = [];
+  nuevoMensaje: string = '';
 
-  constructor(private openaiService: OpenaiService) {}
-
-  toggleChat() {
-    this.isChatOpen = !this.isChatOpen;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<ChatComponent>
+  ) {
+    this.contactoSeleccionado = data.contacto;
   }
 
-  sendMessage() {
-    if (this.newMessage.trim()) {
-      
-      this.messages.push({ sender: 'User', text: this.newMessage });
-
-      this.openaiService.ggenerateResponse(this.newMessage).subscribe({
-        next: (response: any) => {
-          const botReply = response.choices[0].message.content;
-          this.messages.push({ sender: 'Bot', text: botReply });
-        },
-        error: (err: any) => {
-          console.error('Error al obtener respuesta del bot:', err);
-          this.messages.push({ sender: 'Bot', text: 'Lo siento, ocurrió un error al procesar tu mensaje.' });
-        }
-      });
-
-      this.newMessage = '';
+  enviarMensaje() {
+    if (this.nuevoMensaje.trim()) {
+      this.mensajes.push({ sender: 'Admin', text: this.nuevoMensaje });
+      this.nuevoMensaje = '';
     }
+  }
+
+  cerrarChat() {
+    this.dialogRef.close();
   }
 }

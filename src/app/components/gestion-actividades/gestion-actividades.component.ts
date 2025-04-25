@@ -58,28 +58,36 @@ export class GestionActividadesComponent {
   }
 
   getAllActividades() {
-    this.apiService.getActividadesJoin().subscribe((response: any) => {
+    this.apiService.getActividadCompleta().subscribe((response: any) => {
       this.actividadesCompletas = response.actividades;
     });
   }
 
-  editarActividad(actividad: Actividad) {
-    this.selectedActividad = actividad;
+  editarActividad(id_actividad: number) {
+    this.router.navigate(['/editarActividad'], { queryParams: { id_actividad } });
+
   }
 
   eliminarActividad(actividad: Actividad) {
-    if (!confirm(`¿Estás seguro de que deseas eliminar la actividad ${actividad.descripcion}?`)) {
+    if (confirm(`¿Estás seguro de que deseas eliminar la actividad ${actividad.descripcion}?`)) {
       this.apiService.deleteActividad(actividad.id_actividad).subscribe(
         (response) => {
           console.log('Actividad eliminada:', response);
-          this.actividades = this.actividades.filter(a => a.id_actividad !== actividad.id_actividad); // Actualizar la lista de actividades
+          this.getAllActividades();
+          this.getDestinos();
+          this.getTipoActividades();
+          this.apiService.getActividades().subscribe(
+            (response: Actividad[]) => {
+              this.actividades = response;
+            }
+          );
         },
         error => {
           console.error('Error al eliminar la actividad:', error);
         }
       );
     }
-    
+
   }
   onSubmit() {
     if (this.formCrearActividad.valid) {

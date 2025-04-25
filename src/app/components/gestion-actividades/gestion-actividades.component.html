@@ -38,7 +38,7 @@
                     <td class="actividades-table-cell">{{actividad.disponibilidad_actividad ? 'Sí' : 'No'}}</td>
                     <td class="actividades-table-cell">{{actividad.precio}}€/H</td>
                     <td class="actividades-table-cell actividades-actions">
-                        <button class="btn actividades-edit-btn" (click)="editarActividad(actividad)">Editar</button>
+                        <button class="btn actividades-edit-btn" (click)="editarActividad(actividad.id_actividad)">Editar</button>
                         <button class="btn actividades-delete-btn" (click)="eliminarActividad(actividad)">Eliminar</button>
                     </td>
                 </tr>

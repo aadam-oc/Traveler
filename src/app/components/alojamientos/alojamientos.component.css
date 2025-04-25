@@ -15,6 +15,33 @@ body {
     padding: 20px;
 }
 
+.layout-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 2rem; /* Espacio entre filtro y contenido */
+  padding: 20px;
+}
+
+.form-container {
+  flex: 0 0 250px; /* ancho fijo para el filtro */
+}
+
+.content-container {
+  flex: 1;
+}
+
+.card-container {
+  padding: 0;
+}
+
+.card-deck {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
 .paginacion {
   display: flex;
   align-items: center;
@@ -44,7 +71,6 @@ body {
 
 .card-deck {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -237,3 +263,129 @@ body {
   .add-cart-btn:hover {
     background: #218838;
   }
+
+
+  /*FILTRO*/
+  /* Formulario pegado a la izquierda */
+.form-container {
+  flex: 0 0 250px;
+  margin: 30px auto;
+  background: #143d2c63;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Agrupación de cada campo */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  font-size: 1rem;
+}
+
+/* Filtro de precio con barra deslizante */
+#priceRange {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 5px;
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+#priceRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #4b5563;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#priceRange::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4b5563;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Visualización del precio seleccionado */
+.form-group span {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Árbol de ciudades */
+.tree-container {
+  animation: expand 0.3s ease-out forwards;
+  margin-bottom: 1rem;
+}
+
+.tree-node {
+  background: #e5e7eb;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.tree-label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #111827;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.tree-children {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.tree-children li {
+  margin-bottom: 0.5rem;
+}
+
+.tree-children input[type='radio'] {
+  margin-right: 0.5rem;
+}
+
+/* Animación */
+@keyframes expand {
+  from {
+      opacity: 0;
+      transform: scaleY(0.95);
+  }
+
+  to {
+      opacity: 1;
+      transform: scaleY(1);
+  }
+}
+
+.expand {
+  animation: expand 0.3s ease-out forwards;
+  transform-origin: top;
+}

@@ -4,6 +4,8 @@ import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Contacto } from '../../models/contacto';
+import { MatDialog } from '@angular/material/dialog';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-gestion-contacto',
@@ -12,9 +14,18 @@ import { Contacto } from '../../models/contacto';
   styleUrl: '../dashboard/dashboard.component.css',
 })
 export class GestionContactoComponent {
-  chat() {
-    throw new Error('Method not implemented.');
+  
+    contactos: Contacto[] = [];
+  
+    constructor(private dialog: MatDialog, private apiService: ApiService, private router: Router) {}
+
+  chat(contacto: Contacto) {
+    this.dialog.open(ChatComponent, {
+      data: { contacto },
+      width: '500px',
+    });
   }
+
   resuelto(id: any) {
     this.apiService.resuelto(id).subscribe(
       (data) => {
@@ -23,11 +34,6 @@ export class GestionContactoComponent {
         this.getAllContactos();
       });
   }
-  contactos: Contacto[] = [];
-  p: number = 1; // Variable para la paginación
-
-  constructor(private apiService: ApiService, private router: Router) { }
-
   getAllContactos() {
     this.apiService.getContactos().subscribe(data => {
       if (data && data.contacto && Array.isArray(data.contacto)) {

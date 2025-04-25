@@ -1,19 +1,20 @@
-<h1 class="titulo">¡Bienvenido! (USUARIO)</h1>
+<h1 class="titulo">¡Bienvenido, {{ nombre }}!</h1>
+
 <div class="card">
-    <img class="foto-usuario"
-        src="http://172.17.131.14:3000/uploads/1743518085523.png"
-        alt="Placeholder-Usuario">
-    <div class="card-info">
-        <p class="nombre"><strong>Nombre:</strong> (Usuario)</p>
-        <p class="correo"><strong>Correo:</strong> example&#64;example.com</p>
-        <button class="edit-btn">EDITAR PERFIL</button>
-    </div>
+  <img
+    class="foto-usuario"
+    [src]="foto || 'http://172.17.131.14:3000/uploads/1743518085523.png'"
+    alt="Foto del usuario" />
+
+  <div class="card-info">
+    <p class="nombre"><strong>Nombre:</strong> {{ nombre }}</p>
+    <p class="correo"><strong>Correo:</strong> {{ correo }}</p>
+    <button class="edit-btn">EDITAR PERFIL</button>
+  </div>
 </div>
 
+<br /><br />
 
-<br><br>
 <div class="dashboard-container">
-    <a routerLink="/dashboard">DASHBOARD</a>
+  <a routerLink="/dashboard" class="dashboard-link">Ir al Dashboard</a>
 </div>
-
-<br><br>

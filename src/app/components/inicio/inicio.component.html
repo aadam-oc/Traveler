@@ -1,11 +1,11 @@
 <div class="hero-container">
     <img src="/Fondo.png" alt="Fondo" class="hero-background" />
-    <div class="hero-content">
-        <h1 class="welcome-title">WELCOME TO TRAVELLER</h1>
+    <div class="hero-content" id="hero-content"> 
+        <h1 class="welcome-title">WELCOME TO traveler</h1>
         <hr><br>
-        <p class="welcome-subtitle">¡Explora el mundo con Traveller!</p>
+        <p class="welcome-subtitle">¡Explora el mundo con traveler!</p>
         <p class="welcome-description">
-            Descubre destinos increíbles, encuentra alojamientos perfectos y aprovecha ofertas únicas, todo en un solo lugar. Compara opciones, reserva de forma fácil y segura, y disfruta de un viaje inolvidable. ¡Tu próxima gran aventura comienza con Traveller!
+            Descubre destinos increíbles, encuentra alojamientos perfectos y aprovecha ofertas únicas, todo en un solo lugar. Compara opciones, reserva de forma fácil y segura, y disfruta de un viaje inolvidable. ¡Tu próxima gran aventura comienza con traveler!
         </p>
         <a href="javascript:void(0);" class="btn btn-primary" (click)="scrollToSection()">EXPLORAR</a>
         <div class="social-icons">
@@ -65,15 +65,16 @@
         </div>
     </div>
 
-    <iframe
-    src="https://www.chatbase.co/chatbot-iframe/LvNA3gEjb8MdrjfaWJ3w9"
-    width="100%"
-    style="height: 100%; min-height: 700px"
-    frameborder="0"
-></iframe>
-    
-    
+    <button 
+    id="scrollToTop" 
+    class="scroll-top-btn" 
+    *ngIf="mostrarBoton" 
+    (click)="scrollToTop()">
+    <img src="http://172.17.131.14:3000/uploads/1744381510145.png" alt="Subir">
+  </button>
+
 </div>
+
 <br><br>
 <!--<div class="antesFooter">
     <img src="http://172.17.131.14:3000/uploads/1742225011984.jpeg" alt="Fondo" class="antes-background" />

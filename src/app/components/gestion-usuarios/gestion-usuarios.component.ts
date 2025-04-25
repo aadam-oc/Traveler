@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../../models/usuario';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { RouterLink } from '@angular/router';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-gestion-usuarios',
@@ -49,11 +51,11 @@ export class GestionUsuariosComponent {
   }
 
   onEdit( id_usuario: number) {
-    this.router.navigate(['/editar-usuario', id_usuario]);
+    this.router.navigate(['/editarUsuario'], { queryParams: { id_usuario } });
   }
 
   onDelete(user: Usuario) {
-    if (!confirm(`¿Estás seguro de que deseas eliminar el usuario ${user.correo}?`)) {
+    if (confirm(`¿Estás seguro de que deseas eliminar el usuario ${user.correo}?`)) {
       this.apiService.deleteUsuario(user.id_usuario).subscribe(
         response => {
           console.log('Usuario eliminado:', response);

@@ -15,6 +15,16 @@ import { AuthGuard } from './auth.guard';
 import { PostBlogComponent } from './components/post-blog/post-blog.component';
 import { PoliticaPrivacidadComponent } from './components/politica-privacidad/politica-privacidad.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
+import { EditarActividadesComponent } from './components/editar-actividades/editar-actividades.component';
+import { GestionAlojamientosComponent } from './components/gestion-alojamientos/gestion-alojamientos.component';
+import { GestionActividadesComponent } from './components/gestion-actividades/gestion-actividades.component';
+import { GestionTiposActividadesComponent } from './components/gestion-tipos-actividades/gestion-tipos-actividades.component';
+import { GestionDestinosComponent } from './components/gestion-destinos/gestion-destinos.component';
+import { GestionUsuariosComponent } from './components/gestion-usuarios/gestion-usuarios.component';
+import { GestionRolesComponent } from './components/gestion-roles/gestion-roles.component';
+
+
 
 export const appRoutes: Routes = [
   { path: '', component: InicioComponent },
@@ -32,6 +42,14 @@ export const appRoutes: Routes = [
   { path: 'post-blog', component: PostBlogComponent},
   { path: 'politica-privacidad', component: PoliticaPrivacidadComponent, data: {title: 'POLÍTICA DE PRIVACIDAD'}},
   { path: 'faq', component: FaqComponent, data: {title: 'FAQ'}},
+  { path: 'editarUsuario', component: EditarUsuarioComponent, data: {title: 'EDITAR USUARIO'}},
+  { path: 'editarActividad', component: EditarActividadesComponent, data: {title: 'EDITAR ACTIVIDADES'}},
+  { path: 'gestionAlojamientos', component: GestionAlojamientosComponent, data: {title: 'GESTIÓN ALOJAMIENTOS'} },
+  { path: 'gestionActividades', component: GestionActividadesComponent, data: {title: 'GESTIÓN ACTIVIDADES'}},
+  { path: 'gestionTiposActividades', component: GestionTiposActividadesComponent, data: {title: 'GESTIÓN TIPOS ACTIVIDADES'}},
+  { path: 'gestionDestinos', component: GestionDestinosComponent, data: {title: 'GESTIÓN DESTINOS'}},
+  { path: 'gestionUsuarios', component: GestionUsuariosComponent, data: {title: 'GESTIÓN USUARIOS'}},
+  { path: 'gestionRoles', component: GestionRolesComponent, data: {title: 'GESTIÓN ROLES'}},
   { path: '**', redirectTo: '' } 
 ];
 

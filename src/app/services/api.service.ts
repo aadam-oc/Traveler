@@ -21,7 +21,7 @@ export class ApiService {
 
   //login
   loginUser(data: any): Observable<any> {
-    return this.http.post('http://localhost:3000/traveler/login', data, {
+    return this.http.post('http://172.17.22.103:3000/traveler/login', data, {
       headers: { 'Content-Type': 'application/json' }
     });
   }
@@ -58,6 +58,20 @@ deleteActividad(id: number): Observable<any> {
 //actividades completo
 getActividadesJoin(): Observable<any> {
   return this.http.get(`${this.apiUrl}/traveler/actividades_completo`);
+}
+
+//actividad completa sin imagen
+getActividadCompleta(): Observable<any> {
+  return this.http.get(`${this.apiUrl}/traveler/actividades_completo_sin_imagenes`);
+}
+
+//actividades completo
+getActividadesJoinById(id_actividad: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/traveler/actividades_completo/${id_actividad}`);
+}
+
+putActividadCompleta(id_actividad: number, actividad: Item): Observable<any> {
+  return this.http.put(`${this.apiUrl}/traveler/actividades_completo/${id_actividad}`, actividad);
 }
 
 
@@ -170,6 +184,10 @@ getUsuariosCompletos(): Observable<any> {
   return this.http.get(`${this.apiUrl}/traveler/usuarios_full`);
 }
 
+getUsuariosCompletosById(id: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/traveler/usuarios_full/${id}`);
+}
+
 //usuario por id
 getUsuarioById(id: number): Observable<any> {
   return this.http.get(`${this.apiUrl}/traveler/usuarios/${id}`);
@@ -187,6 +205,11 @@ postUsuarioCompleto(usuario: any): Observable<any> {
 //actualizar usuario
 putUsuario(id: number, usuario: any): Observable<any> {
   return this.http.put(`${this.apiUrl}/traveler/usuarios/${id}`, usuario);
+}
+
+//actualizar usuario completo
+putUsuarioCompleto(id: number, usuario: any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/traveler/usuarios_full/${id}`, usuario);
 }
 
 //eliminar usuario

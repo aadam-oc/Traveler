@@ -32,10 +32,10 @@ export class HeaderComponent {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       const currentUrl = event.urlAfterRedirects;
-      console.log('URL actual:', currentUrl); // 👈 Agregado
+      console.log('URL actual:', currentUrl); 
   
       this.pageTitle = this.route.root.firstChild?.snapshot.data['title'] || '';
-      this.isHomePage = currentUrl === '/'; // 👈 Verifica que sea la ruta correcta
+      this.isHomePage = currentUrl === '/'; 
   
       this.animateTitle = false;
       setTimeout(() => {
@@ -46,3 +46,6 @@ export class HeaderComponent {
   
 
 }
+
+
+

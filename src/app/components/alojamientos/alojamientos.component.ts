@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { Alojamientos } from '../../models/alojamientos';
@@ -9,21 +10,30 @@ import { ImagenesAlojamientos } from '../../models/imagenes-alojamientos';
 
 @Component({
   selector: 'app-alojamientos',
-  imports: [CommonModule, NgxPaginationModule],
+  imports: [CommonModule, NgxPaginationModule, ReactiveFormsModule, FormsModule],
   templateUrl: './alojamientos.component.html',
   styleUrls: ['./alojamientos.component.css']
 })
 export class AlojamientosComponent {
   p: number = 1;
+
   imagenes: ImagenesAlojamientos[] = [];
-  alojamientos: Alojamientos[] = [];
+
   destinos: Destinos[] = [];
+
+  alojamientos: Alojamientos[] = [];
+  alojamientosFiltrados: Alojamientos[] = [];
+
+  paises: string[] = [];
+  ciudades: string[] = [];
+
+  form!: FormGroup;
 
   modalAbierto: boolean = false;
   alojamientoSeleccionado: any = null;
   imagenActual: number = 0;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private fb: FormBuilder) { }
 
 
   getImagenesAlojamientos(id_alojamiento: number): ImagenesAlojamientos[] {
@@ -31,25 +41,33 @@ export class AlojamientosComponent {
 
     this.apiService.getImagenesAlojamientos(id_alojamiento).subscribe(data => {
       // Asignar las imágenes a la variable de clase
-      
-      imagenesAlojamientos= data.imagenes
-      
-      
+
+      imagenesAlojamientos = data.imagenes
+
+
       console.log('Imagenes de alojamientos:', imagenesAlojamientos);
     });
-    
+
     return imagenesAlojamientos;
   }
 
 
-  
-
-
   ngOnInit() {
-    
+    // Inicializar Formulario
+    this.form = this.fb.group({
+      pais: [''],
+      ciudad: [''],
+      priceRangeAlojamientos: [700]
+    });
+  
+    // Suscribirse a los cambios del formulario si quieres filtrar automáticamente
+    this.form.valueChanges.subscribe(() => {
+      this.filtrarAlojamientos();
+    });
+  
     this.apiService.getAlojamientosCompletos().subscribe(
       (data: any) => {
-        // Obtener las imágenes de los alojamientos
+        // Obtener los alojamientos
         this.alojamientos = data.alojamientos.map((alojamiento: any) => ({
           id_alojamiento: alojamiento.id_alojamiento,
           nombre_alojamiento: alojamiento.nombre_alojamiento,
@@ -64,13 +82,20 @@ export class AlojamientosComponent {
           correo: alojamiento.correo,
           imagenes: [] // Inicializar como un array vacío
         }));
-
+  
+        this.alojamientosFiltrados = [...this.alojamientos];
+  
+        // Obtener los países únicos
+        this.paises = [...new Set(this.alojamientos.map(a => a.pais))];  // Obtener países únicos
+        console.log('Paises disponibles:', this.paises);  // Ver los países disponibles
+  
         // Obtener imágenes para cada alojamiento
         this.alojamientos.forEach((alojamiento) => {
           this.apiService.getImagenesAlojamientos(alojamiento.id_alojamiento).subscribe(data => {
             alojamiento.imagenes = data.imagenes; // Asignar las imágenes al alojamiento
           });
         });
+  
         console.log('Alojamientos completos:', this.alojamientos);
       },
       (error: any) => {
@@ -78,6 +103,40 @@ export class AlojamientosComponent {
       }
     );
   }
+  
+
+  filtrarAlojamientos() {
+    const { pais, ciudad, priceRangeAlojamientos } = this.form.value;
+  
+    console.log('Filtros actuales:', pais, ciudad, priceRangeAlojamientos);
+  
+    // Filtrar alojamientos según los filtros seleccionados
+    this.alojamientosFiltrados = this.alojamientos.filter(a =>
+      (!pais || a.pais === pais) &&
+      (!ciudad || a.ciudad === ciudad) &&
+      a.precio_dia <= priceRangeAlojamientos
+    );
+  
+    console.log('Alojamientos filtrados:', this.alojamientosFiltrados);
+  
+    // Si se selecciona un país, actualizar las ciudades disponibles
+    if (pais) {
+      const ciudadesDelPais = this.alojamientos
+        .filter(a => a.pais === pais)
+        .map(a => a.ciudad);
+      this.ciudades = [...new Set(ciudadesDelPais)]; // Eliminar duplicados
+      console.log('Ciudades para el país seleccionado:', this.ciudades);
+    } else {
+      this.ciudades = []; // Si no hay país seleccionado, vaciar las ciudades
+      console.log('No hay país seleccionado, ciudades vacías');
+    }
+  
+    // Resetear ciudad si ya no aplica
+    if (this.form.value.ciudad && !this.ciudades.includes(this.form.value.ciudad)) {
+      this.form.patchValue({ ciudad: '' }, { emitEvent: false });
+      console.log('Ciudad resetada, ya no está en las ciudades disponibles');
+    }
+  } 
 
   abrirModal(alojamiento: any) {
     this.alojamientoSeleccionado = alojamiento;

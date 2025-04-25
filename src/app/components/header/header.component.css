@@ -109,6 +109,22 @@ header {
     height: 100vh !important;
 }
 
+.login-register-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px; /* Controla el tamaño del formulario */
+  text-align: center;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -122,4 +138,8 @@ header {
 
 .fade-in {
     animation: fadeIn 1s ease-in-out;
+}
+
+.palabralogo {
+    font-family: sans-serif;
 }

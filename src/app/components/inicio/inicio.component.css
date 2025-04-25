@@ -271,3 +271,40 @@ body {
     font-weight: bold;
     color: #ffffff;
 }
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 16px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #00250f; 
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+    padding: 0;
+}
+
+.scroll-top-btn.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scroll-top-btn img {
+    width: 60%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); 
+}
+
+.scroll-top-btn:hover {
+    background-color: #0056b3;
+}
+

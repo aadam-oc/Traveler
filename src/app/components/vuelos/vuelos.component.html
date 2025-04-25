@@ -1,1 +1,11 @@
 
+<h2>Lista de Vuelos</h2>
+<ul *ngIf="vuelos.length > 0; else sinVuelos">
+  <li *ngFor="let vuelo of vuelos">
+    ID: {{ vuelo.id }} - Origen: {{ vuelo.origen }} - Destino: {{ vuelo.destino }}
+  </li>
+</ul>
+
+<ng-template #sinVuelos>
+  <p>No hay vuelos disponibles.</p>
+</ng-template>

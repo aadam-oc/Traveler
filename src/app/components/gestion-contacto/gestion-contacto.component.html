@@ -42,9 +42,9 @@
                             <td class="contact-table-cell" *ngIf="!contacto.resuelto">Sin resolver</td>
                             <td class="contact-table-cell">{{ contacto.fecha_contacto | date: 'dd/MM/yyyy' }}</td>
                             <td class="contact-table-cell contact-actions">
-                                <button class="btn btn-primary contact-edit-button" (click)="chat()">Chat</button>
+                                <button class="btn btn-primary contact-edit-button" (click)="chat(contacto)">Chat</button>
                                 <button class="btn btn-danger contact-delete-button" (click)="resuelto(contacto.id_contacto)">Resuelto</button>
-                            </td>
+                              </td>
                         </tr>
                     </tbody>
                 </table>

@@ -78,12 +78,12 @@ getDestinos() {
     );
   }
 
-  editarAlojamiento(alojamiento: Alojamientos) {
-    alert('todavia no se puede editar');
+  editarAlojamiento(id_alojamiento: Alojamientos) {
+    this.router.navigate(['/editarAlojamiento'], { queryParams: { id_alojamiento } });
   }
 
   eliminarAlojamiento(id_alojamiento: number) {
-    if (!confirm(`¿Estás seguro de que deseas eliminar el alojamiento con ID ${id_alojamiento}?`)) {
+    if (confirm(`¿Estás seguro de que deseas eliminar el alojamiento con ID ${id_alojamiento}?`)) {
       this.apiService.deleteAlojamiento(id_alojamiento).subscribe(
         response => {
           console.log('Alojamiento eliminado:', response);
