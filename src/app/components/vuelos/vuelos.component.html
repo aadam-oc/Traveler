@@ -1,11 +1,12 @@
-
-<h2>Lista de Vuelos</h2>
-<ul *ngIf="vuelos.length > 0; else sinVuelos">
-  <li *ngFor="let vuelo of vuelos">
-    ID: {{ vuelo.id }} - Origen: {{ vuelo.origen }} - Destino: {{ vuelo.destino }}
-  </li>
-</ul>
-
-<ng-template #sinVuelos>
-  <p>No hay vuelos disponibles.</p>
-</ng-template>
+<div class="vuelos-container">
+  <div *ngIf="vuelos.length > 0; else sinVuelos" class="vuelos-list">
+      <div *ngFor="let vuelo of vuelos" class="vuelo-card">
+          <h3>Vuelo ID: {{ vuelo.id_vuelo }}</h3>
+          <p><strong>Origen:</strong> {{ vuelo.id_origen }}</p>
+          <p><strong>Destino:</strong> {{ vuelo.id_destino }}</p>
+      </div>
+  </div>
+  <ng-template #sinVuelos>
+      <p class="no-vuelos">No hay vuelos disponibles.</p>
+  </ng-template>
+</div>

@@ -11,7 +11,6 @@ import { of } from 'rxjs';
   imports: [CommonModule],
   templateUrl: './vehiculos-alquiler.component.html',
   styleUrls: ['./vehiculos-alquiler.component.css'],
-  providers: [FakeApiVehiculosService]
 })
 export class VehiculosAlquilerComponent implements OnInit {
   vehiculos: VehiculosAlquiler[] = [];

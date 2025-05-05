@@ -11,7 +11,7 @@ import { ChatComponent } from '../chat/chat.component';
   selector: 'app-gestion-contacto',
   imports: [CommonModule, MatExpansionModule],
   templateUrl: './gestion-contacto.component.html',
-  styleUrl: '../dashboard/dashboard.component.css',
+  styleUrl: './gestion-contacto.component.css',
 })
 export class GestionContactoComponent {
   

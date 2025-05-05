@@ -144,18 +144,17 @@ export class AlojamientosComponent {
     this.modalAbierto = true;
   }
 
-  cerrarModal() {
-    this.modalAbierto = false;
-  }
+ // Métodos para el modal
 
-  cambiarImagen(direccion: number) {
-    const totalImagenes = this.alojamientoSeleccionado.imagenes.length;
-    if (totalImagenes > 0) {
-      this.imagenActual = (this.imagenActual + direccion + totalImagenes) % totalImagenes;
-    }
+cerrarModal(event: MouseEvent) {
+  // Solo cerrar si se hace clic en el overlay o en el botón de cerrar
+  if (
+    (event.target as HTMLElement).classList.contains('modal-overlay') ||
+    (event.target as HTMLElement).classList.contains('cerrar-modal')
+  ) {
+    this.alojamientoSeleccionado = null;
+    // Restaurar scroll del body
+    document.body.style.overflow = 'auto';
   }
-
-  agregarAlCarrito(alojamiento: any) {
-    alert(`${alojamiento.nombre_alojamiento} añadido al carrito`);
-  }
+}
 }

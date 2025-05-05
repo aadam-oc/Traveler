@@ -1,38 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { VehiculosAlquiler } from '../models/vehiculos-alquiler';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FakeApiVehiculosService {
-  private apiUrl = 'http://172.17.40.7:3001/apicoches';
+  private apiUrl = 'http://172.17.40.7:3001';
 
   constructor(private http: HttpClient) { }
 
   // VEHÍCULOS
   getVehiculos(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/vehiculos`);
+    return this.http.get(`${this.apiUrl}/apicoches/vehiculos`);
   }
 
   getVehiculoPorId(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/vehiculos/${id}`);
+    return this.http.get(`${this.apiUrl}/apicoches/vehiculos/${id}`);
   }
 
   getVehiculosPorTipo(tipoId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/vehiculos/tipo/${tipoId}`);
+    return this.http.get(`${this.apiUrl}/apicoches/vehiculos/tipo/${tipoId}`);
   }
 
   crearVehiculo(vehiculo: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/vehiculos`, vehiculo);
+    return this.http.post(`${this.apiUrl}/apicoches/vehiculos`, vehiculo);
   }
 
   actualizarVehiculo(id: number, vehiculo: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/vehiculos/${id}`, vehiculo);
+    return this.http.put(`${this.apiUrl}/apicoches/vehiculos/${id}`, vehiculo);
   }
 
   eliminarVehiculo(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/vehiculos/${id}`);
+    return this.http.delete(`${this.apiUrl}/apicoches/vehiculos/${id}`);
   }
 
   // DESTINOS

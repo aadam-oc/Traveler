@@ -31,7 +31,7 @@ export class ActividadesComponent implements OnInit {
     this.form = this.fb.group({
       pais: [''],
       ciudad: [''],
-      priceRange: [200]
+      priceRange: [700]
     });
 
     this.apiService.getActividadesJoin().subscribe((response: any) => {

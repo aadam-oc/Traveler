@@ -7,14 +7,19 @@ import { Actividad } from '../../models/actividad';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TipoActividad } from '../../models/tipo-actividad';
 import { Destinos } from '../../models/destinos';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-gestion-actividades',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatExpansionModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatExpansionModule, NgxPaginationModule],
   templateUrl: './gestion-actividades.component.html',
-  styleUrl: '../dashboard/dashboard.component.css',
+  styleUrl: './gestion-actividades.component.css',
 })
 export class GestionActividadesComponent {
+
+  //Paginación
+  p: number = 1;
+  
   tipoActividades: TipoActividad[] = [];
   actividades: Actividad[] = [];
   actividadesCompletas: Actividad[] = [];

@@ -9,6 +9,7 @@ import { Item } from '../models/item.model'; // Importa la interfaz
   providedIn: 'root'
 })
 export class ApiService {
+  
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
@@ -42,17 +43,34 @@ getActividadById(id: number): Observable<any> {
 
 //crear actividad
 postActividad(actividad: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/actividades`, actividad);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+
+  return this.http.post(`${this.apiUrl}/traveler/actividades`, actividad, { headers });
 }
 
 //actualizar actividad
 putActividad(id: number, actividad: Item): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/actividades/${id}`, actividad);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/actividades/${id}`, actividad, { headers });
 }
 
 //eliminar actividad
 deleteActividad(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/traveler/actividades/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}/traveler/actividades/${id}`, { headers });
 }
 
 //actividades completo
@@ -71,7 +89,13 @@ getActividadesJoinById(id_actividad: number): Observable<any> {
 }
 
 putActividadCompleta(id_actividad: number, actividad: Item): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/actividades_completo/${id_actividad}`, actividad);
+
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/actividades_completo/${id_actividad}`, actividad, { headers });
 }
 
 
@@ -91,17 +115,32 @@ getTipoActividadById(id: number): Observable<any> {
 
 //crear tipo_actividad
 postTipoActividad(nombre_tipo_actividad: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/tipo_actividad`, nombre_tipo_actividad);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post(`${this.apiUrl}/traveler/tipo_actividad`, nombre_tipo_actividad, { headers });
 }
 
 //actualizar tipo_actividad
 putTipoActividad(id: number, tipo_actividad: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/tipo_actividad/${id}`, tipo_actividad);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/tipo_actividad/${id}`, tipo_actividad, { headers });
 }
 
 //eliminar tipo_actividad
 deleteTipoActividad(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/traveler/tipo_actividad/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}/traveler/tipo_actividad/${id}`, { headers });
 }
 
 
@@ -120,17 +159,32 @@ getDestinoById(id: number): Observable<any> {
 
 //crear destino
 postDestino(destino: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/destinos`, destino);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post(`${this.apiUrl}/traveler/destinos`, destino, { headers });
 }
 
 //actualizar destino
 putDestino(id: number, destino: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/destinos/${id}`, destino);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/destinos/${id}`, destino, { headers });
 }
 
 //eliminar destino
 deleteDestino(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/traveler/destinos/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}/traveler/destinos/${id}`, { headers });
 }
 
 
@@ -153,17 +207,33 @@ getAlojamientoById(id: number): Observable<any> {
 
 //crear alojamiento
 postAlojamiento(alojamiento: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/alojamientos`, alojamiento);
+  const token = localStorage.getItem('authToken'); 
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+
+  return this.http.post(`${this.apiUrl}/traveler/alojamientos`, alojamiento, { headers });
 }
 
 //actualizar alojamiento
 putAlojamiento(id: number, alojamiento: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/alojamientos/${id}`, alojamiento);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/alojamientos/${id}`, alojamiento, { headers });
 }
 
 //eliminar alojamiento
 deleteAlojamiento(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/traveler/alojamientos/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}/traveler/alojamientos/${id}`, { headers });
 }
 
 
@@ -175,46 +245,91 @@ deleteAlojamiento(id: number): Observable<any> {
 
 //usuarios
 getUsuarios(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/traveler/usuarios`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/usuarios`, { headers });
 }
 
 
 //usuarios completos
 getUsuariosCompletos(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/traveler/usuarios_full`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/usuarios_full`, { headers });
 }
 
 getUsuariosCompletosById(id: number): Observable<any> {
-  return this.http.get(`${this.apiUrl}/traveler/usuarios_full/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/usuarios_full/${id}`, { headers });
 }
 
 //usuario por id
 getUsuarioById(id: number): Observable<any> {
-  return this.http.get(`${this.apiUrl}/traveler/usuarios/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/usuarios/${id}`, { headers });
 }
 
 //crear usuario
 postUsuario(usuario: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/usuarios`, usuario);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post(`${this.apiUrl}/traveler/usuarios`, usuario, { headers });
 }
 
 postUsuarioCompleto(usuario: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/usuarios_full`, usuario);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post(`${this.apiUrl}/traveler/usuarios_full`, usuario, { headers });
 }
 
 //actualizar usuario
 putUsuario(id: number, usuario: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/usuarios/${id}`, usuario);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/usuarios/${id}`, usuario, { headers });
 }
 
 //actualizar usuario completo
 putUsuarioCompleto(id: number, usuario: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/usuarios_full/${id}`, usuario);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/usuarios_full/${id}`, usuario, { headers });
 }
 
 //eliminar usuario
 deleteUsuario(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/traveler/usuarios/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}/traveler/usuarios/${id}`, { headers });
 }
 
 
@@ -227,27 +342,52 @@ deleteUsuario(id: number): Observable<any> {
 
 //caracterisitcas_usuarios
 getCaracterisitcasUsuarios(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/traveler/caracteristicas_usuarios`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/caracteristicas_usuarios`, { headers });
 }
 
 //caracterisitca_usuario por id
 getCaracterisitcaUsuarioById(id: number): Observable<any> {
-  return this.http.get(`${this.apiUrl}/traveler/caracteristicas_usuarios/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/caracteristicas_usuarios/${id}`, { headers });
 }
 
 //crear caracterisitca_usuario
 postCaracterisitcaUsuario(caracterisitca_usuario: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/caracteristicas_usuarios`, caracterisitca_usuario);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post(`${this.apiUrl}/traveler/caracteristicas_usuarios`, caracterisitca_usuario, { headers });
 }
 
 //actualizar caracterisitca_usuario
 putCaracterisitcaUsuario(id: number, caracterisitca_usuario: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/caracteristicas_usuarios/${id}`, caracterisitca_usuario);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/caracteristicas_usuarios/${id}`, caracterisitca_usuario, { headers });
 }
 
 //eliminar caracterisitca_usuario
 deleteCaracterisitcaUsuario(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/traveler/caracteristicas_usuarios/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}/traveler/caracteristicas_usuarios/${id}`, { headers });
 }
 
 
@@ -269,16 +409,31 @@ getRolById(id: number): Observable<any> {
 
 //crear rol
 postRol(rol: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/traveler/roles`, rol);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post(`${this.apiUrl}/traveler/roles`, rol, { headers });
 }
 
 //actualizar rol
 putRol(id: number, rol: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/traveler/roles/${id}`, rol);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/traveler/roles/${id}`, rol, { headers });
 }
 
 deleteRol(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/traveler/roles/${id}`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}/traveler/roles/${id}`, { headers });
 }
 
 
@@ -292,15 +447,26 @@ deleteRol(id: number): Observable<any> {
 //contacto
 
 getContactos(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/contacto/contacto`);
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/contacto/contacto`, { headers });
 }
 
 postContacto(contacto: any): Observable<any> {
+  
   return this.http.post(`${this.apiUrl}/contacto/contacto`, contacto);
 }
 
 resuelto(id: number): Observable<any> {
-  return this.http.put(`${this.apiUrl}/contacto/contacto/resuelto/${id}`, {});
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put(`${this.apiUrl}/contacto/contacto/resuelto/${id}`, {}, { headers });
 }
 
 
@@ -309,6 +475,34 @@ getImagenesAlojamientos(id_alojamiento: number): Observable<any> {
   return this.http.get(`${this.apiUrl}/traveler/imagenes_alojamientos/alojamiento/${id_alojamiento}`);
 }
   
-  
+//Chat
+getChat(id_contacto: number): Observable<any> {
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/chat/${id_contacto}`, { headers });
+}
+
+postChat(mensaje: { id_usuario1: number; id_usuario2: number; mensaje: string }): Observable<any> {
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post(`${this.apiUrl}/traveler/chat`, mensaje, { headers });
+}
+
+
+//Imagenes de usuario
+getImagenUsuario(id_usuario: any): Observable<any> {
+  const token = localStorage.getItem('authToken');
+  console.log('TOKEN ENVIADO:', token);
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.get(`${this.apiUrl}/traveler/imagenes_usuarios/${id_usuario}`, { headers });
+}
   
 }

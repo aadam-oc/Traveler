@@ -11,7 +11,7 @@ import { Destinos } from '../../models/destinos';
   selector: 'app-gestion-alojamientos',
   imports: [ CommonModule, FormsModule, ReactiveFormsModule, MatExpansionModule],
   templateUrl: './gestion-alojamientos.component.html',
-  styleUrl: '../dashboard/dashboard.component.css',
+  styleUrl: './gestion-alojamientos.component.css',
 })
 export class GestionAlojamientosComponent {
   alojamientos: Alojamientos[] = [];
@@ -28,7 +28,9 @@ export class GestionAlojamientosComponent {
       descripcion: ['', Validators.required],
       id_usuario: [null],
       max_personas: [null, Validators.required],
-      direccion: ['', Validators.required]
+      direccion: ['', Validators.required],
+      hora_entrada: ['', Validators.required],
+      hora_salida: ['', Validators.required]
     });
   }
   
@@ -50,14 +52,15 @@ export class GestionAlojamientosComponent {
           id_alojamiento: alojamiento.id_alojamiento,
           nombre_alojamiento: alojamiento.nombre_alojamiento,
           id_destino: alojamiento.id_destino,
+          ciudad: alojamiento.ciudad,
+          pais: alojamiento.pais,
           precio_dia: alojamiento.precio_dia,
           descripcion: alojamiento.descripcion,
           id_usuario: alojamiento.id_usuario,
           max_personas: alojamiento.max_personas,
           direccion: alojamiento.direccion,
-          pais: alojamiento.pais,
-          ciudad: alojamiento.ciudad,
-          correo: alojamiento.correo
+          hora_entrada: alojamiento.hora_entrada,
+          hora_salida: alojamiento.hora_salida
         }));
         //console.log('Alojamientos completos:', this.alojamientosCompletos);
       },
@@ -114,7 +117,9 @@ getDestinos() {
         descripcion: this.alojamientoForm.value.descripcion,
         id_usuario: Number(localStorage.getItem('id_usuario')), 
         max_personas: this.alojamientoForm.value.max_personas,
-        direccion: this.alojamientoForm.value.direccion
+        direccion: this.alojamientoForm.value.direccion,
+        hora_entrada: this.alojamientoForm.value.hora_entrada,
+        hora_salida: this.alojamientoForm.value.hora_salida
       };
       console.log('Form data:', formData); // Log the form data to the console
 

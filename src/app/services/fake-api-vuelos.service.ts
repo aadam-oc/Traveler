@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Vuelos } from '../models/vuelos';
 
-export interface Vuelo {
-  id_vuelo?: number;
-  id_origen: number;
-  id_destino: number;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,22 +14,22 @@ export class FakeApiVuelosService {
   constructor(private http: HttpClient) {}
 
   // Obtener todos los vuelos
-  getVuelos(): Observable<Vuelo[]> {
-    return this.http.get<Vuelo[]>(`${this.apiUrl}/vuelos`);
+  getVuelos(): Observable<Vuelos[]> {
+    return this.http.get<Vuelos[]>(`${this.apiUrl}/vuelos`);
   }
 
   // Obtener un vuelo por ID
-  getVueloById(id: number): Observable<Vuelo> {
-    return this.http.get<Vuelo>(`${this.apiUrl}/vuelos/${id}`);
+  getVueloById(id: number): Observable<Vuelos> {
+    return this.http.get<Vuelos>(`${this.apiUrl}/vuelos/${id}`);
   }
 
   // Crear un nuevo vuelo
-  createVuelo(vuelo: Vuelo): Observable<any> {
+  createVuelo(vuelo: Vuelos): Observable<any> {
     return this.http.post(`${this.apiUrl}/vuelos`, vuelo);
   }
 
   // Actualizar un vuelo existente
-  updateVuelo(id: number, vuelo: Vuelo): Observable<any> {
+  updateVuelo(id: number, vuelo: Vuelos): Observable<any> {
     return this.http.put(`${this.apiUrl}/vuelos/${id}`, vuelo);
   }
 

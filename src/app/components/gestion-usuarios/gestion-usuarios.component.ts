@@ -13,7 +13,7 @@ import { query } from '@angular/animations';
   selector: 'app-gestion-usuarios',
   imports: [ReactiveFormsModule, CommonModule, FormsModule, MatExpansionModule],
   templateUrl: './gestion-usuarios.component.html',
-  styleUrl: '../dashboard/dashboard.component.css',
+  styleUrl: './gestion-usuarios.component.css',
 })
 export class GestionUsuariosComponent {
   users: any[] = [];

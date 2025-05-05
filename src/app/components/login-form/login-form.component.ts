@@ -62,6 +62,8 @@ export class LoginFormComponent {
         console.log('Apellido2 guardado en localStorage:', localStorage.getItem('apellido2'));
         console.log('Telefono1 guardado en localStorage:', localStorage.getItem('telefono1'));
         console.log('Telefono2 guardado en localStorage:', localStorage.getItem('telefono2'));
+
+        this.router.navigate(['/']); 
         },
         error: (err) => {
         console.error('❌ Error al obtener datos del usuario:', err);

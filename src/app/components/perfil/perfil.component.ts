@@ -15,6 +15,7 @@ export class PerfilComponent {
   nombre: string = 'Usuario'; // si tienes un nombre real, ajusta esto
   correo: string = '';
   foto: string = '';
+  rol: string = '1';
 
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -22,6 +23,15 @@ export class PerfilComponent {
     this.correo = localStorage.getItem('correo') || '';
     this.nombre = localStorage.getItem('nombre') || 'Usuario';
     this.foto = localStorage.getItem('foto') || ''; // si guardas foto también
+    this.rol = localStorage.getItem('id_rol') || '1'; // Ajusta el valor por defecto según tu lógica
+
+    this.apiService.getImagenUsuario(localStorage.getItem('id_usuario')).subscribe(
+      (data: any) => {
+        console.log('Imagen de usuario:', data);
+        this.foto = data.imagen.nombre_imagen_usuario || ''; // Ajusta según la estructura de tu respuesta
+        localStorage.setItem('foto', this.foto); // Guarda la foto en localStorage si es necesario
+      }
+    );
 
     console.log('📦 Datos cargados desde localStorage:');
     console.log('Correo:', this.correo);

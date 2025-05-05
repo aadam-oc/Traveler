@@ -13,4 +13,6 @@ export interface Alojamientos {
     max_personas: number;
     direccion: string;
     imagenes: ImagenesAlojamientos[]; 
+    hora_entrada: string;
+    hora_salida: string;
 }

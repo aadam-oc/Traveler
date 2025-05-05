@@ -14,8 +14,10 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     const token = localStorage.getItem('authToken');
+    const userRole = localStorage.getItem('id_rol');
 
     console.log('Token encontrado:', token);
+    console.log('Rol encontrado:', userRole);
 
     // Permitir acceso libre a /register
     if (next.routeConfig?.path === 'register') {
@@ -23,10 +25,30 @@ export class AuthGuard implements CanActivate {
     }
 
     if (token) {
+      // Verificar si el usuario intenta acceder al dashboard
+      if (next.routeConfig?.path === 'dashboard' && userRole !== '2') {
+        console.warn('Acceso denegado. Rol requerido: Admin');
+        this.router.navigate(['/']);
+        return false;
+      }
       return true;
     } else {
       this.router.navigate(['/login']);
       return false;
     }
   }
+
+  checkAdminRole(): boolean {
+    const userRole = localStorage.getItem('id_rol');
+
+    console.log('Rol encontrado:', userRole);
+
+    if (userRole === '2') {
+      return true;
+    } else {
+      console.warn('Acceso denegado. Rol requerido: Admin');
+      return false;
+    }
+  }
+  
 }

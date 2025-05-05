@@ -16,10 +16,10 @@ import { of } from 'rxjs';
 export class VuelosComponent implements OnInit {
   vuelos: any[] = [];
 
-  constructor(private vuelosService: FakeApiVuelosService) {}
+  constructor(private fakeApiVuelosService: FakeApiVuelosService) {}
 
   ngOnInit(): void {
-    this.vuelosService.getVuelos()
+    this.fakeApiVuelosService.getVuelos()
       .pipe(
         catchError(error => {
           console.error('Error al obtener los vuelos:', error);

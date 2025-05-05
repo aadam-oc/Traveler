@@ -30,8 +30,9 @@
     <!-- Rango de precio -->
     <div class="form-group">
       <label for="priceRangeAlojamientos">💰 Rango de Precio:</label>
-      <input type="range" formControlName="priceRangeAlojamientos" id="priceRange"
-        min="15" max="200" step="5" />
+      <input type="range" formControlName="priceRangeAlojamientos"
+        id="priceRange"
+        min="15" max="700" step="5" />
       <span>0€ - {{ form.value.priceRangeAlojamientos }}€</span>
     </div>
   </form>
@@ -68,50 +69,52 @@
 </div>
 
 <!-- Modal -->
-<div class="modal-overlay" *ngIf="modalAbierto && alojamientoSeleccionado">
-  <div class="modal-container">
-    <button class="close-btn" (click)="cerrarModal()">✖</button>
+<div class="modal-overlay" *ngIf="modalAbierto && alojamientoSeleccionado"
+  (click)="cerrarModal($event)">
+  <div class="modal-contenido" [class.modal-abierto]="alojamientoSeleccionado">
+    <button class="cerrar-modal" (click)="cerrarModal($event)">×</button>
 
-    <div class="modal-content">
-      <!-- Carrousel de imágenes -->
-      <div class="carousel">
-        <img *ngIf="alojamientoSeleccionado?.imagenes?.length > 0"
-          [src]="alojamientoSeleccionado.imagenes[imagenActual].url"
-          alt="Imagen del alojamiento">
-        <button *ngIf="alojamientoSeleccionado?.imagenes?.length > 1"
-          class="prev" (click)="cambiarImagen(-1)">&#10094;</button>
-        <button *ngIf="alojamientoSeleccionado?.imagenes?.length > 1"
-          class="next" (click)="cambiarImagen(1)">&#10095;</button>
+    <div class="modal-header">
+      <h2>{{ alojamientoSeleccionado?.nombre_alojamiento }}</h2>
+      <div class="modal-ubicacion">
+        <span class="modal-pais">🌍 {{ alojamientoSeleccionado?.pais }}</span>
+        <span class="modal-ciudad">📍 {{ alojamientoSeleccionado?.ciudad
+          }}</span>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-imagen-container">
+        <img [src]="alojamientoSeleccionado?.imagenes[0]"
+          alt="Imagen del alojamiento" class="modal-imagen">
       </div>
 
-      <!-- Información del alojamiento -->
       <div class="modal-info">
-        <h2 class="titulo-modal">{{ alojamientoSeleccionado.nombre_alojamiento
-          }}</h2>
-        <p class="ciudad-pais">{{alojamientoSeleccionado.pais}},
-          {{alojamientoSeleccionado.ciudad}}</p>
-        <div>
-          <p class="descripcion-title"><strong>Descripción</strong></p>
-          <p class="descripcion-modal">{{ alojamientoSeleccionado.descripcion
-            }}</p>
-        </div>
-        <div class="precio-persona-container">
-          <div class="precio-persona">
-            <p class="precio-modal">{{ alojamientoSeleccionado.precio_dia
-              }}€/dia</p>
-            <p class="max-personas">
-              <img class="icono-personas"
-                src="http://172.17.131.14:3000/uploads/1744294057980.png"
-                alt="icono-personas">
-              {{alojamientoSeleccionado.max_personas}}</p>
-          </div>
-          <button class="add-cart-btn"
-            (click)="agregarAlCarrito(alojamientoSeleccionado)">
-            ¡Rervar Ahora!
-          </button>
+        <div class="modal-seccion">
+          <h3>Descripción</h3>
+          <p>{{ alojamientoSeleccionado?.descripcion }}</p>
         </div>
 
+        <div class="modal-seccion">
+          <h3>Detalles</h3>
+          <div class="modal-detalles">
+            <div class="detalle-item">
+              <span class="detalle-label">Precio:</span>
+              <span class="detalle-valor precio-destacado">{{
+                alojamientoSeleccionado?.precio_dia }}€/día</span>
+            </div>
+            <div class="detalle-item">
+              <span class="detalle-label">Máx. Personas:</span>
+              <span class="detalle-valor">{{
+                alojamientoSeleccionado?.max_personas }}</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-reservar"> Reservar Ahora</button>
     </div>
   </div>
 </div>
