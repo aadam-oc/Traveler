@@ -42,232 +42,198 @@ mat-expansion-panel mat-expansion-panel mat-panel-title {
     font-size: 1rem;
 }
 
-.form-container {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 28rem;
-    margin: 0 auto;
+/* Estilos para la tabla de alojamientos */
+.alojamientos-list {
+    padding: 16px 0;
 }
 
-.form-group {
-    margin-bottom: 1rem;
+.alojamientos-table-container {
+    overflow-x: auto;
+    /* Para hacer la tabla responsive */
+    margin: 16px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.form-label {
-    display: block;
-    color: #4a4a4a;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.form-input,
-.form-select,
-.form-control {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    outline: none;
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-control:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-}
-
-.form-button,
-.btn {
-    width: 100%;
-    background-color: #3b82f6;
-    color: white;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.form-button:hover,
-.btn:hover {
-    background-color: #2563eb;
-}
-
-.error-message {
-    color: #ef4444;
-    font-size: 0.8rem;
-    margin-top: 0.3rem;
-}
-
-.user-list,
-.content {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #f9fafb;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.user-list-title {
-    font-size: 1.5rem;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.user-list-description {
-    font-size: 1rem;
-    color: #6b7280;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.user-table,
-.actividades-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-
-.user-table th,
-.user-table td,
-.actividades-table-header-cell,
-.actividades-table-cell {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.user-table th,
-.actividades-table-header {
-    background-color: #f3f4f6;
-    color: #374151;
-    font-weight: bold;
-}
-
-.user-table tr:nth-child(even),
-.actividades-table-body .actividades-table-row:nth-child(even) {
-    background-color: #f9fafb;
-}
-
-.actividades-table-body .actividades-table-row:hover {
-    background-color: #f3f4f6;
-}
-
-.action-button,
-.actividades-edit-btn,
-.actividades-delete-btn {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.edit-button,
-.actividades-edit-btn {
-    background-color: #10b981;
-    color: white;
-}
-
-.edit-button:hover,
-.actividades-edit-btn:hover {
-    background-color: #059669;
-}
-
-.delete-button,
-.actividades-delete-btn {
-    background-color: #ef4444;
-    color: white;
-    margin-left: 0.5rem;
-}
-
-.delete-button:hover,
-.actividades-delete-btn:hover {
-    background-color: #dc2626;
-}
-
-.collapsible {
-    background-color: #3b82f6;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    margin-bottom: 1rem;
-    margin: 2%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.collapsible:hover {
-    background-color: #2563eb;
-}
-
-.content.active {
-    display: block;
-}
-
-.actividades-actions {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Estilos mejorados para las tablas */
 .alojamientos-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: #ffffff; /* Fondo blanco para claridad */
-    border: 1px solid #d1d5db; /* Borde gris claro */
-    border-radius: 8px; /* Bordes redondeados */
-    overflow: hidden; /* Evita que el contenido sobresalga */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    font-size: 0.9rem;
 }
 
 .alojamientos-table-header {
-    background-color: #3b82f6; /* Azul vibrante para encabezado */
-    color: #ffffff; /* Texto blanco */
-    font-weight: bold;
-    text-align: left;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #143D2C;
 }
 
 .alojamientos-table-header-cell {
-    padding: 12px 16px; /* Espaciado interno */
-    font-size: 0.95rem;
-    border-bottom: 2px solid #2563eb; /* Línea divisoria */
+    background-color: #f5f5f5;
+    color: #143D2C;
+    font-weight: 600;
+    padding: 14px 16px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    white-space: nowrap;
 }
 
-.alojamientos-table-body .alojamientos-table-row:nth-child(even) {
-    background-color: #f9fafb; /* Fondo gris claro para filas pares */
+.alojamientos-table-row:nth-child(even) {
+    background-color: #ffffff;
 }
 
-.alojamientos-table-body .alojamientos-table-row:nth-child(odd) {
-    background-color: #ffffff; /* Fondo blanco para filas impares */
+.alojamientos-table-row:nth-child(odd) {
+    background-color: #f9fafb;
 }
 
-.alojamientos-table-body .alojamientos-table-row:hover {
-    background-color: #e3f2fd; /* Azul claro para hover */
-    transition: background-color 0.3s ease; /* Transición suave */
+.alojamientos-table-row:hover {
+    background-color: #edf7f0;
+    transition: background-color 0.2s ease;
 }
 
 .alojamientos-table-cell {
-    padding: 12px 16px; /* Espaciado interno */
-    font-size: 0.9rem;
-    color: #374151; /* Gris oscuro para texto */
-    border-bottom: 1px solid #e5e7eb; /* Línea divisoria */
-    text-align: left;
+    color: #444444;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eeeeee;
+    vertical-align: middle;
+}
+
+/* Columna de descripción con texto truncado */
+.alojamientos-table-cell:nth-child(7) {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.alojamientos-actions {
+    white-space: nowrap;
+    text-align: center;
 }
 
 /* Botones de acción */
+.alojamientos-edit-button,
+.alojamientos-delete-button {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0 4px;
+}
+
+.alojamientos-edit-button {
+    background-color: #143D2C;
+    color: white;
+}
+
+.alojamientos-edit-button:hover {
+    background-color: #1f5a41;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alojamientos-delete-button {
+    background-color: #ef4444;
+    color: white;
+}
+
+.alojamientos-delete-button:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario de alojamientos */
+.alojamiento-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 70px;
+    max-width: 100%;
+    background-color: #f9fafb; /* Fondo claro para destacar el formulario */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alojamiento-form-group {
+    margin-bottom: 16px;
+}
+
+.alojamiento-form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #143D2C; /* Verde oscuro para el texto */
+    font-size: 0.95rem;
+}
+
+.alojamiento-form-input,
+.alojamiento-form-select {
+    width: 80%;
+    padding: 12px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.alojamiento-form-input:focus,
+.alojamiento-form-select:focus {
+    outline: none;
+    border-color: #10b981; /* Verde para el borde al enfocar */
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Estilo especial para el campo de descripción */
+textarea.alojamiento-form-input {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.alojamiento-error-message {
+    color: #ef4444; /* Rojo para los mensajes de error */
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+.alojamiento-form-button {
+    grid-column: 1 / -1;
+    background-color: #143D2C; /* Verde oscuro */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+    width: auto;
+    justify-self: center;
+    min-width: 200px;
+}
+
+.alojamiento-form-button:hover {
+    background-color: #0f2d20; /* Verde más oscuro al pasar el mouse */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alojamiento-form-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Estilo para el contenedor del formulario */
+.form-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

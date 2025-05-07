@@ -6,14 +6,18 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 import { HttpClient } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Destinos } from '../../models/destinos';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @Component({
   selector: 'app-gestion-destinos',
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, MatExpansionModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatExpansionModule, NgxPaginationModule],
   templateUrl: './gestion-destinos.component.html',
-  styleUrl: '../dashboard/dashboard.component.css',
+  styleUrl: './gestion-destinos.component.css',
 })
 export class GestionDestinosComponent {
+  //Paginación
+  p: number = 1;
 
   destinos: Destinos[] = [];
   form: FormGroup;
@@ -31,7 +35,7 @@ export class GestionDestinosComponent {
     });
   }
 
-  
+
 
   getDestinos() {
     this.apiService.getDestinos().subscribe(

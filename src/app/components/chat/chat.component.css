@@ -23,15 +23,18 @@
   }
   
   button {
-    align-self: flex-end;
+    margin: 1rem auto 2rem; 
+    display: block; 
     padding: 0.5rem 1rem;
-    background-color: #3b82f6;
+    background-color: #143D2C; 
     color: white;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-  }
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
   
   button:hover {
-    background-color: #2563eb;
+    background-color: #059669; 
   }

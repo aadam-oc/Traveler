@@ -6,15 +6,20 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 import { HttpClient } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TipoActividad } from '../../models/tipo-actividad';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @Component({
   selector: 'app-gestion-tipos-actividades',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatExpansionModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatExpansionModule, NgxPaginationModule],
   templateUrl: './gestion-tipos-actividades.component.html',
-  styleUrl: '../dashboard/dashboard.component.css',
+  styleUrl: './gestion-tipos-actividades.component.css',
 })
 export class GestionTiposActividadesComponent {
+
+  //Paginación
+  p: number = 1;
+
   formCrearTiposActividades: FormGroup;
   tiposActividades: TipoActividad[] = [];
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
@@ -38,7 +43,7 @@ export class GestionTiposActividadesComponent {
     alert('Todavia no se puede editar');
   }
 
-  eliminarTipoActividad(id_tipo_actividad : number) {
+  eliminarTipoActividad(id_tipo_actividad: number) {
     if (confirm(`¿Estás seguro de que deseas eliminar el tipo de actividad con ID ${id_tipo_actividad}?`)) {
       this.apiService.deleteTipoActividad(id_tipo_actividad).subscribe(
         response => {
@@ -50,7 +55,7 @@ export class GestionTiposActividadesComponent {
         }
       );
     }
-    
+
   }
 
   onSubmit() {

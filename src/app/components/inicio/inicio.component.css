@@ -308,3 +308,23 @@ body {
     background-color: #0056b3;
 }
 
+.custom-carousel {
+    background-color: #143d2c;
+    padding: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .carousel-image {
+    border-radius: 15px;
+    object-fit: cover;
+    height: 300px;
+  }
+  
+  .c-carousel-control {
+    color: white;
+  }
+  
+  .c-carousel-control:hover {
+    color: #10b981;
+  }

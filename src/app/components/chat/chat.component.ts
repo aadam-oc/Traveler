@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms'; // Import FormsModule for template-driven forms
-import { CommonModule } from '@angular/common'; // Import CommonModule for ngIf, ngFor, etc.
-// Removed FormsModule import as it should be included in the NgModule instead.
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-chat',
@@ -15,8 +14,6 @@ import { CommonModule } from '@angular/common'; // Import CommonModule for ngIf,
 })
 export class ChatComponent {
   contactoSeleccionado: any;
-  mensajes: { sender: string; text: string }[] = [];
-  nuevoMensaje: string = '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,11 +22,12 @@ export class ChatComponent {
     this.contactoSeleccionado = data.contacto;
   }
 
-  enviarMensaje() {
-    if (this.nuevoMensaje.trim()) {
-      this.mensajes.push({ sender: 'Admin', text: this.nuevoMensaje });
-      this.nuevoMensaje = '';
-    }
+  enviarCorreo() {
+    const email = this.contactoSeleccionado?.correo || 'example@example.com';
+    const subject = encodeURIComponent('Asunto del correo');
+    const body = encodeURIComponent('Escribe aquí el contenido del correo.');
+    const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}&from=ayudatraveler@gmail.com`;
+    window.open(mailtoLink, '_blank');
   }
 
   cerrarChat() {

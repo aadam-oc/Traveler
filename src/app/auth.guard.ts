@@ -26,8 +26,21 @@ export class AuthGuard implements CanActivate {
 
     if (token) {
       // Verificar si el usuario intenta acceder al dashboard
-      if (next.routeConfig?.path === 'dashboard' && userRole !== '2') {
-        console.warn('Acceso denegado. Rol requerido: Admin');
+      if (next.routeConfig?.path === 'dashboard' && userRole !== '2' ) {
+        console.warn('Acceso denegado.');
+        this.router.navigate(['/']);
+        return false;
+      }
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    if (token) {
+      // Verificar si el usuario intenta acceder al dashboard
+      if (next.routeConfig?.path === 'dashboard' && userRole !== '2' ) {
+        console.warn('Acceso denegado.');
         this.router.navigate(['/']);
         return false;
       }

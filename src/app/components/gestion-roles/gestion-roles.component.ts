@@ -6,11 +6,13 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 import { HttpClient } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Roles } from '../../models/roles';
+
+
 @Component({
   selector: 'app-gestion-roles',
   imports: [ ReactiveFormsModule, CommonModule, FormsModule, MatExpansionModule],
   templateUrl: './gestion-roles.component.html',
-  styleUrl: '../dashboard/dashboard.component.css',
+  styleUrl: './gestion-roles.component.css',
 })
 export class GestionRolesComponent {
 

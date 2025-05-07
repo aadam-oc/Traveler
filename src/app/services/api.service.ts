@@ -487,10 +487,7 @@ getChat(id_contacto: number): Observable<any> {
 
 postChat(mensaje: { id_usuario1: number; id_usuario2: number; mensaje: string }): Observable<any> {
   const token = localStorage.getItem('authToken');
-  console.log('TOKEN ENVIADO:', token);
-  const headers = {
-    Authorization: `Bearer ${token}`
-  };
+  const headers = { Authorization: `Bearer ${token}` };
   return this.http.post(`${this.apiUrl}/traveler/chat`, mensaje, { headers });
 }
 

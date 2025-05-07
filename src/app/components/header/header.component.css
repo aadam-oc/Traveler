@@ -82,11 +82,11 @@ header {
     color: white;
     border-radius: 10px;
     font-weight: bold;
-    background-color: #0D3C00; /* Verde oscuro */
+    background-color: #143D2C; /* Verde oscuro */
 }
 
 .auth-buttons .btn:hover {
-    background-color: #095B02; /* Un verde más oscuro al pasar el ratón */
+    background-color: #1f5a41; /* Un verde más oscuro al pasar el ratón */
 }
 
 .hero-section {

@@ -88,7 +88,7 @@ mat-expansion-panel mat-expansion-panel mat-panel-title {
 .form-button,
 .btn {
     width: 100%;
-    background-color: #3b82f6;
+    background-color: #143D2C;
     color: white;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -148,11 +148,17 @@ mat-expansion-panel mat-expansion-panel mat-panel-title {
     border-bottom: 1px solid #e5e7eb;
 }
 
+.actividades-table-header-cell {
+    border-bottom: 2px solid #143D2C;
+
+}
+
 .user-table th,
 .actividades-table-header {
     background-color: #f3f4f6;
-    color: #374151;
+    color: #143D2C;
     font-weight: bold;
+    
 }
 
 .user-table tr:nth-child(even),
@@ -167,23 +173,23 @@ mat-expansion-panel mat-expansion-panel mat-panel-title {
 .action-button,
 .actividades-edit-btn,
 .actividades-delete-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     border-radius: 0.5rem;
     border: none;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
     transition: background-color 0.3s;
 }
 
 .edit-button,
 .actividades-edit-btn {
-    background-color: #10b981;
+    background-color: #143D2C;
     color: white;
 }
 
 .edit-button:hover,
 .actividades-edit-btn:hover {
-    background-color: #059669;
+    background-color: #1f5a41;
 }
 
 .delete-button,

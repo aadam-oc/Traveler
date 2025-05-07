@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
+import {
+  CarouselComponent,
+  CarouselControlComponent,
+  CarouselInnerComponent,
+  CarouselItemComponent
+}  from '@coreui/angular';
 
 declare global {
   interface Window {
@@ -17,7 +23,8 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-inicio',
-  imports: [CommonModule],
+  imports: [CommonModule, CarouselComponent, CarouselInnerComponent, CarouselItemComponent, CarouselControlComponent],
+  standalone: true,
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
@@ -25,8 +32,11 @@ export class InicioComponent {
   actividades: Actividad[] = [];
   actividad: any;
   mostrarBoton: boolean = false;
-
-
+  slides: any[] = [
+    { src: 'http://172.17.131.14:3000/uploads/1742224263781.jpg', title: 'Angular' },
+    { src: 'http://172.17.131.14:3000/uploads/1742224263781.jpg', title: 'React' },
+    { src: 'http://172.17.131.14:3000/uploads/1742224263781.jpg', title: 'Vue' }
+  ];
   constructor(private renderer: Renderer2, private apiService: ApiService) { }
   
 
